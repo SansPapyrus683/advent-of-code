@@ -6,3 +6,6 @@ so i've decided to quarantine those solutions over [here](https://github.com/San
 if you still want to look at them
 
 but hey, enjoy these solutions that are actually good (i hope)
+
+**note:**
+**these type annotations need python 3.9, so if you're on 3.8 or smth you need to remove them**
