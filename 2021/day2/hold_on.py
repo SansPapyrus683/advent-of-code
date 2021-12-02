@@ -9,8 +9,6 @@ aim = 0
 for d in directions:
     if d[0] == "forward":
         pos += d[1]
-    elif d[0] == "backward":
-        pos -= d[1]
     elif d[0] == "up":
         depth -= d[1]
     elif d[0] == "down":
@@ -24,8 +22,6 @@ for d in directions:
     if d[0] == "forward":
         pos += d[1]
         depth += aim * d[1]
-    elif d[0] == "backward":
-        pos -= d[1]
     elif d[0] == "up":
         aim -= d[1]
     elif d[0] == "down":
