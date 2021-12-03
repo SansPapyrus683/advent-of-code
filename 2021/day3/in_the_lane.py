@@ -1,12 +1,12 @@
 with open("snows_glistening.txt") as read:
-    nums = [l.strip() for l in read.readlines()]
+    diagnostic = [l.strip() for l in read.readlines()]
 
 gamma = ""
 epsilon = ""
-for i in range(len(nums[0])):
+for i in range(len(diagnostic[0])):
     one_count = 0
     zero_count = 0
-    for n in nums:
+    for n in diagnostic:
         if n[i] == "1":
             one_count += 1
         else:
@@ -20,9 +20,9 @@ for i in range(len(nums[0])):
         epsilon += "1"
 print(f"wooo got 22nd place globally: {int(gamma, 2) * int(epsilon, 2)}")
 
-oxy = nums.copy()
-co2 = nums.copy()
-for i in range(len(nums[0])):
+oxy = diagnostic.copy()
+co2 = diagnostic.copy()
+for i in range(len(diagnostic[0])):
     # these two segments are so similar but so different AAAAA
     if len(oxy) > 1:
         oxy_one_count = 0
