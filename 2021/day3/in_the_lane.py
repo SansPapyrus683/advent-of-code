@@ -16,7 +16,6 @@ for i in range(len(diagnostic[0])):
         epsilon += "0"
     else:
         gamma += "0"
-        gamma += "0"
         epsilon += "1"
 print(f"wooo got 22nd place globally: {int(gamma, 2) * int(epsilon, 2)}")
 
