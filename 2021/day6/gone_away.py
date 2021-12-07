@@ -4,7 +4,7 @@ P1_DAYS = 80
 P2_DAYS = 256
 
 with open("is_the_blue_bird.txt") as read:
-    lanterns = [int(i) for i in read.readline().split(',')]
+    lanterns = [int(i) for i in read.readline().split(",")]
 
 timer_amt = [0 for _ in range(max(TIMER_START, NEW_TIMER) + 1)]
 for l in lanterns:
