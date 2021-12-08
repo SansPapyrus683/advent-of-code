@@ -12,7 +12,10 @@ med_pos = median(crabs)
 p1_fuel = int(sum(abs(c - med_pos) for c in crabs))  # should always be an integer
 print(f"thank god for this obscure math black magic thing: {p1_fuel}")
 
-# lmao idk if there's a better way to do this
+"""
+lmao idk if there's a better way to do this
+ME 20 MINS LATER: turns out the mean is the one that minimizes the squared error
+"""
 min_pos = min(crabs)
 max_pos = max(crabs)
 p2_fuel = float('inf')
