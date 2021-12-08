@@ -18,7 +18,7 @@ ME 20 MINS LATER: turns out the mean is the one that minimizes the squared error
 """
 min_pos = min(crabs)
 max_pos = max(crabs)
-p2_fuel = float('inf')
+p2_fuel = float("inf")
 for p in range(min_pos, max_pos + 1):
     total = 0
     for c in crabs:
