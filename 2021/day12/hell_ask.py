@@ -49,7 +49,7 @@ def path_num_p2(adj: {str: [str]}) -> int:
 neighbors = defaultdict(list)
 with open("you_married.txt") as read:
     for i in read.readlines():
-        s, e = i.strip().split('-')
+        s, e = i.strip().split("-")
         neighbors[s].append(e)
         neighbors[e].append(s)
 
