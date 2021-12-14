@@ -24,7 +24,7 @@ with open("do_the_job.txt") as read:
     read.readline()  # screw off whitespace
     rules = []
     for i in read.readlines():
-        rules.append(i.strip().split(' -> '))
+        rules.append(i.strip().split(" -> "))
     rules = {a: b for a, b in rules}
 
 pairs = defaultdict(int)
@@ -36,6 +36,8 @@ p2_final = None
 for i in range(max(P1_AMT, P2_AMT)):
     new_pairs = pairs.copy()
     for p in pairs:
+        if p not in rules:
+            continue
         to_add = rules[p]
         left = p[0] + to_add
         right = to_add + p[1]
