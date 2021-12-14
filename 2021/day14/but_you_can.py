@@ -14,7 +14,7 @@ def most_minus_least(pair_amts: {str: int}, start: str, end: str):
     # we double counted every character save for the first and last ones
     occ_num[polymer[0]] += 1
     occ_num[polymer[-1]] += 1
-    # ok now we can divided by 2
+    # ok now we can divide by 2, the start & end won't be affected
     occ_num = {a: b // 2 for a, b in occ_num.items()}
     return max(occ_num.values()) - min(occ_num.values())
 
