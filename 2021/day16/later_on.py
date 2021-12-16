@@ -79,6 +79,7 @@ class BITS:
 
 with open("well_conspire.txt") as read:
     string = read.readline().strip()
+
 bits = BITS(string)
 print(f"the result of the thing is this: {bits.parse()} (p2 ans)")
 print(f"and the sum of the versions is {bits.version_total} (p1 ans)")
