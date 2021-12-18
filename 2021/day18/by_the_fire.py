@@ -1,10 +1,10 @@
 from bisect import bisect
 
 
-def reduce(shellfish):
-    def parse_shellfish(shellfish):
+def reduce(snailfish):
+    def parse_snailfish(snailfish):
         new_exp = ""
-        for c in shellfish:
+        for c in snailfish:
             if c == "[":
                 new_exp += "["
             elif c == "]":
@@ -12,25 +12,25 @@ def reduce(shellfish):
             elif type(c) == int:
                 new_exp += str(c) + ", "
             else:
-                raise ValueError("invalid shellfish stuff")
+                raise ValueError("invalid snailfish stuff")
         return eval(new_exp[:-1])
 
-    def break_shellfish(shellfish):
+    def break_snailfish(snailfish):
         new = []
-        for c in str(shellfish):
+        for c in str(snailfish):
             if c.isdigit():
                 new.append(int(c))
             elif c in "[]":
                 new.append(c)
         return new
 
-    shellfish = break_shellfish(shellfish)
+    snailfish = break_snailfish(snailfish)
     valid = False
     while not valid:
         valid = True
         level = 0
-        reg_ind = [i for i in range(len(shellfish)) if type(shellfish[i]) == int]
-        for v, c in enumerate(shellfish):
+        reg_ind = [i for i in range(len(snailfish)) if type(snailfish[i]) == int]
+        for v, c in enumerate(snailfish):
             if c == "[":
                 level += 1
             elif c == "]":
@@ -41,30 +41,30 @@ def reduce(shellfish):
                     left_num = bisect(reg_ind, v - 1) - 1
                     right_num = bisect(reg_ind, v + 2)
                     if 0 <= left_num:
-                        shellfish[reg_ind[left_num]] += c
+                        snailfish[reg_ind[left_num]] += c
                     if right_num < len(reg_ind):
-                        shellfish[reg_ind[right_num]] += shellfish[v + 1]
+                        snailfish[reg_ind[right_num]] += snailfish[v + 1]
 
-                    shellfish[v - 1:v + 3] = [0]
+                    snailfish[v - 1:v + 3] = [0]
                     valid = False
                     break
 
         if valid:
-            for v, c in enumerate(shellfish):
+            for v, c in enumerate(snailfish):
                 if type(c) == int and c >= 10:
-                    shellfish[v:v + 1] = ["[", c // 2, c // 2 + c % 2, "]"]
+                    snailfish[v:v + 1] = ["[", c // 2, c // 2 + c % 2, "]"]
                     valid = False
                     break
-    return parse_shellfish(shellfish)
+    return parse_snailfish(snailfish)
 
 
 def add(first, second):
     return reduce([first] + [second])
 
 
-def magnitude(shellfish):
-    first = shellfish[0] if type(shellfish[0]) == int else magnitude(shellfish[0])
-    second = shellfish[1] if type(shellfish[1]) == int else magnitude(shellfish[1])
+def magnitude(snailfish):
+    first = snailfish[0] if type(snailfish[0]) == int else magnitude(snailfish[0])
+    second = snailfish[1] if type(snailfish[1]) == int else magnitude(snailfish[1])
     return 3 * first + 2 * second
 
 
