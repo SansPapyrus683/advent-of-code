@@ -5,6 +5,15 @@ from itertools import permutations, product
 DIM_NUM = 3
 THRESHOLD = 12
 
+
+def valid_rotation(perm: np.ndarray, plus_min: np.ndarray) -> bool:
+    assert perm.shape == plus_min.shape == (DIM_NUM,)
+    array = np.zeros((DIM_NUM, DIM_NUM), dtype=int)
+    for (a, b, c) in zip(perm, range(DIM_NUM), plus_min):
+        array[a, b] = c
+    return np.linalg.det(array) > 0
+
+
 with open("we_made.txt") as read:
     reports = [r.split("\n")[1:] for r in read.read().strip().split("\n\n")]
 for i in range(len(reports)):
@@ -12,6 +21,11 @@ for i in range(len(reports)):
 
 all_perms = np.array([list(i) for i in permutations(range(DIM_NUM))])
 plus_mins_all = np.array([list(i) for i in product([1, -1], repeat=DIM_NUM)])
+combinations = []
+for p in all_perms:
+    for pm in plus_mins_all:
+        if valid_rotation(p, pm):
+            combinations.append((p, pm))
 
 positions = [None for _ in range(len(reports))]
 positions[0] = np.zeros((DIM_NUM,))
@@ -28,16 +42,15 @@ while not all(p is not None for p in positions):
             unknown_rep = reports[j]
 
             most_common = []
-            for perm in all_perms:
-                for pm in plus_mins_all:
-                    all_points = defaultdict(int)
-                    for p1 in known_rep:
-                        for p2 in unknown_rep:
-                            new_p2 = p2[perm] * pm
-                            all_points[tuple(p1 - new_p2)] += 1
+            for perm, pm in combinations:
+                all_points = defaultdict(int)
+                for p1 in known_rep:
+                    for p2 in unknown_rep:
+                        new_p2 = p2[perm] * pm
+                        all_points[tuple(p1 - new_p2)] += 1
 
-                    all_points = [(v, o) for o, v in all_points.items()]
-                    most_common.append((*max(all_points), pm, perm))
+                all_points = [(v, o) for o, v in all_points.items()]
+                most_common.append((*max(all_points), pm, perm))
 
             occ_amt, delta, pm, perm = max(most_common)
             if occ_amt >= THRESHOLD:
