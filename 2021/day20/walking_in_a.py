@@ -36,4 +36,4 @@ for i in range(max(P1_AMT, P2_AMT)):
     img = new_img
     border = next_border
     if i == P1_AMT - 1 or i == P2_AMT - 1:
-        print(float("inf") if border else img.sum())
+        print(f"some random ans: {float('inf') if border else img.sum()}")
