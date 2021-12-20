@@ -6,6 +6,7 @@ DIM_NUM = 3
 THRESHOLD = 12
 
 
+# look i have no idea how this works, just trust me that it does
 def valid_rotation(perm: np.ndarray, plus_min: np.ndarray) -> bool:
     assert perm.shape == plus_min.shape == (DIM_NUM,)
     array = np.zeros((DIM_NUM, DIM_NUM), dtype=int)
