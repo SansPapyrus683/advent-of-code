@@ -7,5 +7,5 @@ if you still want to look at them
 
 but hey, enjoy these solutions that are actually good (i hope)
 
-**note:**
+**note:**  
 **these type annotations need python 3.9, so if you're on 3.8 or smth you need to remove them**
