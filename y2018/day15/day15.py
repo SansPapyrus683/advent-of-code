@@ -20,7 +20,12 @@ class Unit:
 
 
 class Battle:
-    def __init__(self, elf_data, gob_data, wall_pos):
+    def __init__(
+            self,
+            elf_data: dict[tuple[int, int], Unit],
+            gob_data: dict[tuple[int, int], Unit],
+            wall_pos: set[tuple[int, int]]
+    ):
         self._elves, self._elf_death = deepcopy(elf_data), False
         self._goblins, self._gob_death = deepcopy(gob_data), False
         self._walls = deepcopy(wall_pos)
