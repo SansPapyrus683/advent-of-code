@@ -12,7 +12,8 @@ def simulate(instruction_list: list[list[str, int]]) -> tuple[int, bool]:
             at += 1
         elif instruct == 'jmp':
             at += arg
-    return acc, at not in visited  # the resulting value of acc and whether we get stuck in an infinite loop or not
+    # the resulting value of acc and whether we get stuck in an infinite loop or not
+    return acc, at not in visited
 
 
 with open('children.txt') as read:
