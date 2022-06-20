@@ -6,7 +6,3 @@ so i've decided to quarantine those solutions over [here](https://github.com/San
 if you still want to look at them
 
 but hey, enjoy these solutions that are actually good (i hope)
-
-2015 day 15 is absolute cancer i've postponed doing it
-
-**APPARENTLY ALL THE TYPE ANNOTATIONS HERE ARE WRONG??**

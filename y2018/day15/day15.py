@@ -109,7 +109,6 @@ class Battle:
     def results(self) -> tuple[bool, int]:
         if not self._simmed:
             raise RuntimeError("battle needs to be simulated first")
-
         if self._elves:
             return True, self._round * sum(e.hp for e in self._elves.values())
         return False, self._round * sum(g.hp for g in self._goblins.values())
