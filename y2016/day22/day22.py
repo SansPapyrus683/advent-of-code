@@ -51,6 +51,4 @@ for i in range(len(all_nodes)):
         nj = all_nodes[j]
         total += i != j and ni.used <= nj.avail
 
-print(f"number of viable pairs: {nodes}")
-
-
+print(f"number of viable pairs: {total}")
