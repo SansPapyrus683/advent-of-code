@@ -57,14 +57,12 @@ fn main() {
             to_use = Some(&toggle_fmt);
         }
 
-        for p in to_use.unwrap().captures(i) {
-            instructions.push(Instruction {
-                i_type: i_type.unwrap(),
-                start: Pt { r: p[1].parse().unwrap(), c: p[2].parse().unwrap() },
-                end: Pt { r: p[3].parse().unwrap(), c: p[4].parse().unwrap() }
-            });
-            break;
-        }
+        let p = to_use.unwrap().captures(i).unwrap();
+        instructions.push(Instruction {
+            i_type: i_type.unwrap(),
+            start: Pt { r: p[1].parse().unwrap(), c: p[2].parse().unwrap() },
+            end: Pt { r: p[3].parse().unwrap(), c: p[4].parse().unwrap() }
+        });
     }
 
     let mut lights1 = vec![vec![false; DIMS.1]; DIMS.0];
