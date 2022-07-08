@@ -91,8 +91,8 @@ fn main() {
     }
 
     let wire_a = eval_circuit(&wires)["a"];
-    println!("init value of wire a: {}", wire_a);
+    println!("init value of wire a: {wire_a}");
     wires.insert("b".to_string(), Signal::Raw(wire_a.to_string()));
     let wire_a = eval_circuit(&wires)["a"];
-    println!("new value of wire a: {}", wire_a);
+    println!("new value of wire a: {wire_a}");
 }
