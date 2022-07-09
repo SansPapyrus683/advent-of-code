@@ -1,9 +1,9 @@
-const INPUT: &str = "1113122113";
+const INIT_SEQ: &str = "1113122113";
 const P1_AMT: u32 = 40;
 const P2_AMT: u32 = 50;
 
 fn main() {
-    let mut char_seq: Vec<char> = INPUT.chars().into_iter().collect();
+    let mut char_seq: Vec<char> = INIT_SEQ.chars().into_iter().collect();
 
     let mut seq = Vec::new();
     for c in char_seq {
