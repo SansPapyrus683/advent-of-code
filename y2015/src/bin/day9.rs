@@ -4,11 +4,11 @@ use regex::Regex;
 use itertools::Itertools;
 
 fn main() {
-    let dist_fmt = Regex::new(r"([a-z]*) to ([a-z]*) = (\d+)").unwrap();
+    let dist_fmt = Regex::new(r"([a-z]+) to ([a-z]+) = (\d+)").unwrap();
 
     let read = fs::read_to_string("input/day9.txt").expect("you done messed up");
     let mut adj: HashMap<String, HashMap<String, i32>> = HashMap::new();
-    let mut cities: HashSet<String> = HashSet::new();
+    let mut cities = HashSet::new();
     for l in read.lines() {
         let lc = l.to_lowercase();
         if let Some(m) = dist_fmt.captures(&lc) {
