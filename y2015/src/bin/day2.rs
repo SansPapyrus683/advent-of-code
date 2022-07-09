@@ -1,12 +1,11 @@
 use std::fs;
-use std::cmp;
 
 #[derive(Debug)]
 struct Gift { l: u32, w: u32, h: u32 }
 
 impl Gift {
     fn longest_side(&self) -> u32 {
-        cmp::max(self.l, cmp::max(self.w, self.h))
+        self.l.max(self.w.max(self.h))
     }
 
     fn vol(&self) -> u32 { self.l * self.w * self.h }
