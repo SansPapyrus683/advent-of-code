@@ -28,6 +28,6 @@ fn main() {
         }
     }
 
-    println!("{comb_num}");
-    println!("{min_comb_num}");
+    println!("total # of combinations: {comb_num}");
+    println!("# of minimal combinations: {min_comb_num}");
 }
