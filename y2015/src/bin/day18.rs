@@ -5,10 +5,10 @@ const UNLIT: char = '.';
 const STEPS: u32 = 100;
 
 fn neighbors(r: i32, c: i32) -> Vec<(i32, i32)> {
-    return vec![
+    vec![
         (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
         (r + 1, c + 1), (r + 1, c - 1), (r - 1, c + 1), (r - 1, c - 1)
-    ];
+    ]
 }
 
 fn main() {
