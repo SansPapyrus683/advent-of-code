@@ -14,7 +14,7 @@ fn split_atoms(chem: &String) -> Vec<String> {
         curr.push(c);
     }
     ret.push(curr);
-    return ret;
+    ret
 }
 
 fn main() {
