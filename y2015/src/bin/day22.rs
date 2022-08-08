@@ -108,7 +108,6 @@ fn least_mana(hardcore: bool) -> i32 {
     let mut least = i32::MAX;
     let mut games: Vec<Game> = vec![Game::new()];
     while !games.is_empty() {
-        // println!("{:?}", games);
         let mut nxt = Vec::new();
         for mut g in games {
             g.apply_effects();
@@ -119,7 +118,7 @@ fn least_mana(hardcore: bool) -> i32 {
                     g.p_hp -= if hardcore { 1 } else { 0 };
                     for s in Spell::iter() {
                         let has_effect = g.p_effects.iter().any(
-                            |e| s.effect().is_some() && e.0 == s.effect().unwrap()
+                            |e| Some(e.0) == s.effect()
                         );
                         // check if casting this spell makes sense
                         if has_effect || g.p_mana < s.cost() {
