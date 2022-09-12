@@ -12,7 +12,7 @@ fn neighbors(r: i32, c: i32) -> Vec<(i32, i32)> {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day18.txt").expect("you done messed up");
+    let read = fs::read_to_string("input/day18.txt").expect("bruh");
     let mut lights = Vec::new();
     let mut cols = 0;
     for r in read.lines() {

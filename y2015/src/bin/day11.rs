@@ -15,7 +15,7 @@ fn inc(num: &mut Vec<i32>, base: u32) {
 }
 
 fn to_pw(num: &Vec<i32>) -> String {
-    let mut res = "".to_string();
+    let mut res = String::new();
     for n in num {
         res.push((b'a' + *n as u8) as char);
     }

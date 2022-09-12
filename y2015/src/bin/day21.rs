@@ -1,8 +1,8 @@
 use std::ops;
 use itertools::Itertools;
 
-#[derive(Debug, Clone, Copy)] struct Entity { hp: i32, atk: i32, def: i32 }
-#[derive(Debug, Clone)] struct Thing { cost: i32, dmg: i32, def: i32 }
+#[derive(Clone, Copy)] struct Entity { hp: i32, atk: i32, def: i32 }
+#[derive(Clone)] struct Thing { cost: i32, dmg: i32, def: i32 }
 
 // can't believe i have to do this it's so cancer
 impl ops::Add for Thing {

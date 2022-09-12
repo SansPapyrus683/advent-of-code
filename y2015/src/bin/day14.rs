@@ -3,7 +3,6 @@ use regex::Regex;
 
 const TIME: u32 = 2503;
 
-#[derive(Debug)]
 struct Reindeer {
     speed: i32, time: i32, rest: i32,
     dist: u32, state_time: i32, flying: bool
@@ -14,7 +13,7 @@ fn main() {
         r"[a-z]+ can fly (\d+) km/s for (\d+) seconds, but then must rest for (\d+) seconds"
     ).unwrap();
 
-    let read = fs::read_to_string("input/day14.txt").expect("you done messed up");
+    let read = fs::read_to_string("input/day14.txt").expect("bruh");
     let mut reindeer = Vec::new();
     for r in read.lines() {
         if let Some(m) = reindeer_fmt.captures(r) {

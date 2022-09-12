@@ -6,7 +6,7 @@ use itertools::Itertools;
 fn main() {
     let dist_fmt = Regex::new(r"([a-z]+) to ([a-z]+) = (\d+)").unwrap();
 
-    let read = fs::read_to_string("input/day9.txt").expect("you done messed up");
+    let read = fs::read_to_string("input/day9.txt").expect("bruh");
     let mut adj: HashMap<String, HashMap<String, i32>> = HashMap::new();
     let mut cities = HashSet::new();
     for l in read.lines() {

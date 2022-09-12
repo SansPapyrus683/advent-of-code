@@ -3,9 +3,9 @@ use regex::Regex;
 
 const DIMS: (usize, usize) = (1000, 1000);
 
-#[derive(Debug)] struct Pt { r: usize, c: usize }
-#[derive(Debug)] enum IId { On, Off, Toggle }
-#[derive(Debug)] struct Instruction { i_type: IId, start: Pt, end: Pt }
+struct Pt { r: usize, c: usize }
+enum IId { On, Off, Toggle }
+struct Instruction { i_type: IId, start: Pt, end: Pt }
 
 impl Instruction {
     fn binary_exe(&self, lights: &mut Vec<Vec<bool>>) {
@@ -26,7 +26,9 @@ impl Instruction {
                 match self.i_type {
                     IId::On => lights[r][c] += 1,
                     IId::Off => {
-                        if lights[r][c] > 0 { lights[r][c] -= 1; }
+                        if lights[r][c] > 0 {
+                            lights[r][c] -= 1;
+                        }
                     }
                     IId::Toggle => lights[r][c] += 2
                 }
@@ -41,7 +43,7 @@ fn main() {
     let off_fmt = Regex::new(r"turn off (\d+),(\d+) through (\d+),(\d+)").unwrap();
     let toggle_fmt = Regex::new(r"toggle (\d+),(\d+) through (\d+),(\d+)").unwrap();
 
-    let read = fs::read_to_string("input/day6.txt").expect("you done messed up");
+    let read = fs::read_to_string("input/day6.txt").expect("bruh");
     let mut instructions = Vec::new();
     for i in read.lines() {
         let mut to_use = None;
@@ -61,7 +63,7 @@ fn main() {
         instructions.push(Instruction {
             i_type: i_type.unwrap(),
             start: Pt { r: p[1].parse().unwrap(), c: p[2].parse().unwrap() },
-            end: Pt { r: p[3].parse().unwrap(), c: p[4].parse().unwrap() }
+            end: Pt { r: p[3].parse().unwrap(), c: p[4].parse().unwrap() },
         });
     }
 
@@ -80,6 +82,7 @@ fn main() {
             total2 += lights2[r][c];
         }
     }
+
     println!("p1 total brightness: {total1}");
     println!("p2 total brightness: {total2}");
 }

@@ -1,6 +1,5 @@
 use std::fs;
 
-#[derive(Debug)]
 struct Gift { l: u32, w: u32, h: u32 }
 
 impl Gift {
@@ -20,7 +19,7 @@ impl Gift {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day2.txt").expect("you done messed up");
+    let read = fs::read_to_string("input/day2.txt").expect("bruh");
     let lines: Vec<&str> = read.split_whitespace().collect();
 
     let gift_fmt = regex::Regex::new(r"(\d+)x(\d+)x(\d+)").unwrap();

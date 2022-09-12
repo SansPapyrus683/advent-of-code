@@ -4,7 +4,6 @@ use regex::Regex;
 const TOTAL: i64 = 100;
 const MEAL_CAL_AMT: i64 = 500;
 
-#[derive(Debug)]
 struct Ingredient {
     cap: i64,
     durability: i64,
@@ -19,7 +18,7 @@ fn main() {
         r"[a-z]*: capacity (-?\d+), durability (-?\d+), flavor (-?\d+), texture (-?\d+), calories (-?\d+)"
     ).unwrap();
 
-    let read = fs::read_to_string("input/day15.txt").expect("you done messed up");
+    let read = fs::read_to_string("input/day15.txt").expect("bruh");
 
     let mut ings = Vec::new();
     for i in read.lines() {

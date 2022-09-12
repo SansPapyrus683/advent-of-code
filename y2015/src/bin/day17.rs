@@ -4,7 +4,7 @@ use itertools::Itertools;
 const EGGNOG: u32 = 150;
 
 fn main() {
-    let read = fs::read_to_string("input/day17.txt").expect("you done messed up");
+    let read = fs::read_to_string("input/day17.txt").expect("bruh");
     let mut containers = Vec::new();
     for c in read.lines() {
         containers.push(c.parse::<u32>().unwrap());

@@ -28,7 +28,7 @@ fn num_sum(val: &Value, invalid: &Option<&Vec<String>>) -> i64 {
 }
 
 fn main() {
-    let raw_json = fs::read_to_string("input/day12.txt").expect("you done messed up");
+    let raw_json = fs::read_to_string("input/day12.txt").expect("bruh");
     let json: Value = serde_json::from_str(&raw_json).expect("bad json");
 
     println!("raw sum of #s: {}", num_sum(&json, &None));

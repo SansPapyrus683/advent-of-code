@@ -5,11 +5,11 @@ use regex::Regex;
 /** returns a vector of the individual atoms (i.e. HCa -> [H, Ca]) */
 fn split_atoms(chem: &String) -> Vec<String> {
     let mut ret = Vec::new();
-    let mut curr = "".to_string();
+    let mut curr = String::new();
     for c in chem.chars() {
         if !curr.is_empty() && c.is_uppercase() {
             ret.push(curr);
-            curr = "".to_string();
+            curr = String::new();
         }
         curr.push(c);
     }
@@ -20,7 +20,7 @@ fn split_atoms(chem: &String) -> Vec<String> {
 fn main() {
     let rep_fmt = Regex::new("([A-Za-z]*) => ([A-Za-z]*)").unwrap();
     
-    let read = fs::read_to_string("input/day19.txt").expect("you done messed up");
+    let read = fs::read_to_string("input/day19.txt").expect("bruh");
     let mut read_rep = true;
     let mut reps: HashMap<String, Vec<Vec<String>>> = HashMap::new();
     let mut chem = Vec::new();
@@ -58,7 +58,7 @@ fn main() {
         }
     }
 
-    println!("total possible replacements (pt 1): {}", possible.len());
+    println!("total possible replacements: {}", possible.len());
 
     /*
      * followed u/askalski's sol on Reddit:

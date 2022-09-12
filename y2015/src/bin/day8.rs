@@ -34,7 +34,7 @@ fn encode_len(s: &str) -> i32 {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day8.txt").expect("you done messed up");
+    let read = fs::read_to_string("input/day8.txt").expect("bruh");
 
     let mut total_og_len = 0;
     let mut total_decode_len = 0;

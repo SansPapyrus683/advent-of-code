@@ -1,6 +1,6 @@
 r"""
 boy do i love stackoverflow
-https://stackoverflow.com/questions/11373122/best-way-to-store-a-triangular-hexagonal-grid-in-python
+https://stackoverflow.com/questions/11373122
 i actually rotated the coordinate system by 90 degrees
   _____       _____      ____      __
   / -2,2\_____/ 0,1 \____/2,0 \____/  \__

@@ -6,7 +6,7 @@ use strum_macros::EnumIter;
 const BOSS_HP: i32 = 71;
 const BOSS_ATK: i32 = 10;
 
-#[derive(Debug, Copy, Clone, EnumIter)]
+#[derive(Copy, Clone, EnumIter)]
 enum Spell { Missile, Drain, Shield, Recharge, Poison }
 impl Spell {
     fn cost(&self) -> i32 {
@@ -30,12 +30,12 @@ impl Spell {
     }
 }
 
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Copy, Clone, PartialEq)]
 enum Effect { Shield, Poison, Recharge }
-#[derive(Debug, PartialEq)]
+#[derive(PartialEq)]
 enum Status { Win, Loss, Undecided }
 
-#[derive(Debug, Clone)]
+#[derive(Clone)]
 struct Game {
     p_effects: Vec<(Effect, i32)>,
     p_hp: i32, p_mana: i32, p_spent: i32,
