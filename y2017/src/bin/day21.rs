@@ -86,10 +86,10 @@ fn main() {
         if i == P1_STEPS - 1 || i == P2_STEPS - 1 {
             let on = img.iter().map(|&c| if c == '#' { 1 } else { 0 }).sum::<i32>();
             if i == P1_STEPS - 1 {
-                println!("# on after {P1_STEPS} (p1): {on}");
+                println!("# on after {P1_STEPS} steps (p1): {on}");
             }
             if i == P2_STEPS - 1 {
-                println!("# on after {P2_STEPS} (p2): {on}");
+                println!("# on after {P2_STEPS} steps (p2): {on}");
             }
         }
     }
