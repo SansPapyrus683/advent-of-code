@@ -2,6 +2,7 @@ import Intcode (interp)
 import Utils (split)
 
 import Text.Printf
+import Control.Monad (filterM)
 
 main = do
     file <- readFile "day2/day2.txt"
@@ -9,20 +10,25 @@ main = do
     let code :: [Int] = map read (split file ',')
 
     let
-        replacedEval :: Int -> Int -> [Int]
-        replacedEval noun verb = res
-            where (res, _) =
+        replacedEval :: Int -> Int -> IO [Int]
+        replacedEval noun verb = do
+            (res, _) <-
                     interp ([head code] ++ [noun, verb] ++ drop 3 code) 0
+            pure res
 
-    printf "first element after running: %d\n" (head (replacedEval 12 2))
+    res <- replacedEval 12 2
+    printf "first element after running: %d\n" (head res)
 
     let target :: Int = 19690720
     let
-        foundTarget :: (Int, Int) -> Bool
-        foundTarget (noun, verb) =  head (replacedEval noun verb) == target
+        foundTarget :: (Int, Int) -> IO Bool
+        foundTarget (noun, verb) = do
+            res <- replacedEval noun verb
+            pure (head res == target)
 
     let range = [0..99]
-    let
-        allPairs :: [(Int, Int)] = [(x, y) | x <- range, y <- range]
-        x :: (Int, Int) = head (filter foundTarget allPairs)
+    let allPairs :: [(Int, Int)] = [(x, y) | x <- range, y <- range]
+    validPairs <- filterM foundTarget allPairs
+
+    let x = head validPairs
     printf "id of pair that gives %d: %d\n" target (fst x * 100 + snd x)
