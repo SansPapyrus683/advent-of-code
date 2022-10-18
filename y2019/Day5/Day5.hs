@@ -9,4 +9,4 @@ main = do
 
     let code :: [Int] = map read (split file ',')
 
-    interp code 0
+    interp code 0 -- provide 1 for p1, provide 5 for p2

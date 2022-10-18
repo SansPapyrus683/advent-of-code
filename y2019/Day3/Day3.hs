@@ -53,8 +53,8 @@ main = do
 
     printf "closest crossing: %d\n" (smallestSum crossings)
 
-    let dist1 = map (\c -> position c wire1Pts) crossings
-    let dist2 = map (\c -> position c wire2Pts) crossings
+    let dist1 = map (`position` wire1Pts) crossings
+    let dist2 = map (`position` wire2Pts) crossings
     let combinedDist = zipWith(+) dist1 dist2
 
     printf "closest crossing by wire distance: %d\n" (minimum combinedDist)

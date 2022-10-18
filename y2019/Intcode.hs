@@ -4,19 +4,19 @@ import Debug.Trace
 import Data.Char
 
 data Mode = Pos | Imm deriving (Eq, Ord, Enum, Show)
-data Op = Op { o :: Int, aTypes :: [Mode] } deriving (Eq, Show)
+data Call = Op { o :: Int, aTypes :: [Mode] } deriving (Eq, Show)
 
 upd :: [a] -> Int -> a -> [a]
 upd l pos n = take pos l ++ [n] ++ drop (pos + 1) l
 
 argNum :: Int -> Int
 argNum op
-    | op == 1 || op == 2 || op == 7 || op == 8 = 3
-    | op == 3 || op == 4 = 1
-    | op == 5 || op == 6 = 2
+    | op `elem` [7, 8] = 3
+    | op `elem` [3, 4] = 1
+    | op `elem` [1, 2, 5, 6] = 2
     | op == 99 = 0
 
-parseArg :: Int -> Op
+parseArg :: Int -> Call
 parseArg op =
     let
         o = op `mod` 100
