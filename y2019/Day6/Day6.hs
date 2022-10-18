@@ -48,8 +48,7 @@ main = do
 
     printf "total # of orbits: %d\n" (orbitNum orbitTree root Nothing)
 
-    let
-        youPath = pathToRoot orbitParents you root Nothing
+    let youPath = pathToRoot orbitParents you root Nothing
         santaPath = pathToRoot orbitParents santa root Nothing
 
     let (youUnique, santaUnique) = removeSuffixes youPath santaPath
