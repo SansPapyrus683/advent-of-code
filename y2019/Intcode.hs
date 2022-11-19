@@ -11,9 +11,9 @@ upd l pos n = take pos l ++ [n] ++ drop (pos + 1) l
 
 argNum :: Int -> Int
 argNum op
-    | op `elem` [7, 8] = 3
+    | op `elem` [1, 2, 7, 8] = 3
     | op `elem` [3, 4] = 1
-    | op `elem` [1, 2, 5, 6] = 2
+    | op `elem` [5, 6] = 2
     | op == 99 = 0
 
 parseArg :: Int -> Call

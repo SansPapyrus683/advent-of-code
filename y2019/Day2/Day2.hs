@@ -1,8 +1,8 @@
-import Intcode (interp)
-import Utils (split)
-
 import Text.Printf
 import Control.Monad (filterM)
+
+import Intcode (interp)
+import Utils (split)
 
 main = do
     file <- readFile "day2/day2.txt"

@@ -1,6 +1,7 @@
 module Utils where
 
-import Data.List (elemIndex)
+import Data.Char ( isSpace )
+import Data.List ( dropWhileEnd, elemIndex )
 
 -- THEY TOOK MY SPLIT FUNCTION, CAN'T HAVE CRAP IN DETROIT
 split :: String -> Char -> [String]
@@ -14,3 +15,5 @@ position i l =
     case i `elemIndex` l of
        Just n  -> n
        Nothing -> -1
+
+trim = dropWhileEnd isSpace . dropWhile isSpace

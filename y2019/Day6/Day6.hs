@@ -1,10 +1,10 @@
-import Utils (split)
-
 import System.IO
 import Data.Map.Strict (Map)
 import qualified Data.Map.Strict as M
 import Data.Maybe (fromMaybe, fromJust)
 import Text.Printf
+
+import Utils (split)
 
 orbitNum :: Map String [String] -> String -> Maybe Int -> Int
 orbitNum orbitTree at depth =
