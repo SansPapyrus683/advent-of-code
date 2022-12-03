@@ -22,8 +22,8 @@ add z y
 """.strip()
 
 
-# source: https://stackoverflow.com/questions/312443
-def chunks(lst, n):
+def chunks(lst: list, n: int):
+    """source: https://stackoverflow.com/questions/312443"""
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
 
