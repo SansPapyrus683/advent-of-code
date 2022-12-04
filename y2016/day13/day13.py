@@ -14,12 +14,7 @@ def is_open(r: int, c: int) -> bool:
 
 
 def neighbors(r: int, c: int) -> list[tuple[int, int]]:
-    return [
-        (r + 1, c),
-        (r - 1, c),
-        (r, c + 1),
-        (r, c - 1)
-    ]
+    return [(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)]
 
 
 assert is_open(1, 1)

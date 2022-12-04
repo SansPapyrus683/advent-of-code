@@ -25,7 +25,7 @@ for name, sec_id, checksum in rooms:
         real_name = []
         for c in name:
             if c.isalpha():
-                ind = ord(c) - ord('a')
+                ind = ord(c) - ord("a")
                 real_name.append(
                     ascii_lowercase[(ind + sec_id) % len(ascii_lowercase)]
                 )

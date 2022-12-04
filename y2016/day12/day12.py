@@ -44,5 +44,5 @@ init_reg = defaultdict(int)
 print(f"register a value (p1): {exec_lst(lst, init_reg)['a']}")
 
 init_reg = defaultdict(int)
-init_reg['c'] = 1
+init_reg["c"] = 1
 print(f"register a value (p2): {exec_lst(lst, init_reg)['a']}")
