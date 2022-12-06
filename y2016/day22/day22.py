@@ -11,12 +11,7 @@ class Node:
 
 
 def neighbors(x: int, y: int) -> list[tuple[int, int]]:
-    return [
-        (x + 1, y),
-        (x - 1, y),
-        (x, y + 1),
-        (x, y - 1)
-    ]
+    return [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
 
 
 node_fmt = r"/dev/grid/node-x(\d+)-y(\d+)\s+(\d+)T\s+(\d+)T\s+(\d+)T\s+(\d+)%"
@@ -34,7 +29,8 @@ with open("day22.txt") as read:
 
 max_x = max(n[0] for n in nodes)
 max_y = max(n[1] for n in nodes)
-grid = [[None for _ in range(max_x + 1)] for _ in range(max_y + 1)]
+# type annotations so intellij stops bugging me
+grid: list[list[Node | None]] = [[None for _ in range(max_x + 1)] for _ in range(max_y + 1)]
 for n in nodes:
     grid[n[1]][n[0]] = Node(*n[2:])
 
