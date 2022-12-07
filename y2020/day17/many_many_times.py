@@ -38,9 +38,9 @@ for _ in range(SIM_AMT):
             for z in range(w_and_z):
                 for w in range(w_and_z):
                     filled_count = 0
-                    for nX, nY, nZ, nW in neighbors(x, y, z, w):
-                        if 0 <= nX < x_and_y and 0 <= nY < x_and_y and 0 <= nZ < w_and_z and 0 <= nW < w_and_z:
-                            filled_count += arr[nW, nZ, nY, nX]
+                    for nx, ny, nz, nw in neighbors(x, y, z, w):
+                        if 0 <= nx < x_and_y and 0 <= ny < x_and_y and 0 <= nz < w_and_z and 0 <= nw < w_and_z:
+                            filled_count += arr[nw, nz, ny, nx]
                     if arr[w, z, y, x] == 1 and filled_count not in [2, 3]:
                         new_arr[w, z, y, x] = 0
                     elif arr[w, z, y, x] == 0 and filled_count == 3:
