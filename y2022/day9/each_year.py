@@ -3,14 +3,6 @@ P1_LEN = 2
 P2_LEN = 10
 
 
-def valid_neighbors(x: int, y: int) -> list[tuple[int, int]]:
-    """if knot a is in (x, y), returns all the valid places a succeeding knot can be"""
-    return [
-        (x, y), (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1),
-        (x + 1, y - 1), (x - 1, y + 1), (x + 1, y + 1), (x - 1, y - 1)
-    ]
-
-
 def sign(n: int) -> int:
     if n == 0:
         return 0
@@ -18,6 +10,13 @@ def sign(n: int) -> int:
 
 
 def move_rope(rope: list[tuple[int, int]], delta: tuple[int, int]):
+    def valid_neighbors(x: int, y: int) -> list[tuple[int, int]]:
+        """returns all the valid places a succeeding knot can be"""
+        return [
+            (x, y), (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1),
+            (x + 1, y - 1), (x - 1, y + 1), (x + 1, y + 1), (x - 1, y - 1)
+        ]
+
     head = rope[0]
     rope[0] = (head[0] + delta[0], head[1] + delta[1])
     prev = head
