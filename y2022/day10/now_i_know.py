@@ -19,27 +19,24 @@ grid = [[" " for _ in range(G_WIDTH)] for _ in range(G_HEIGHT)]
 for i in instructions:
     if i == "noop":
         # yes i know this part is used 3 times, sue me
+        if abs(cycle % G_WIDTH - counter) <= 1:
+            grid[cycle // G_WIDTH][cycle % G_WIDTH] = LIT
         cycle += 1
         if cycle in RELEVANT_CYCLES:
             sig_total += cycle * counter
-        if abs((cycle - 1) % G_WIDTH - counter) <= 1:
-            pos = cycle - 1
-            grid[pos // G_WIDTH][pos % G_WIDTH] = LIT
 
     elif i[0] == "addx":
+        if abs(cycle % G_WIDTH - counter) <= 1:
+            grid[cycle // G_WIDTH][cycle % G_WIDTH] = LIT
         cycle += 1
         if cycle in RELEVANT_CYCLES:
             sig_total += cycle * counter
-        if abs((cycle - 1) % G_WIDTH - counter) <= 1:
-            pos = cycle - 1
-            grid[pos // G_WIDTH][pos % G_WIDTH] = LIT
 
+        if abs(cycle % G_WIDTH - counter) <= 1:
+            grid[cycle // G_WIDTH][cycle % G_WIDTH] = LIT
         cycle += 1
         if cycle in RELEVANT_CYCLES:
             sig_total += cycle * counter
-        if abs((cycle - 1) % G_WIDTH - counter) <= 1:
-            pos = cycle - 1
-            grid[pos // G_WIDTH][pos % G_WIDTH] = LIT
 
         counter += i[1]
 
