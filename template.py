@@ -1,34 +1,38 @@
 """this file contains file io init. & some functions you might find useful"""
 
 
+# region utility
 def chunks(lst: list, n: int):
     """source: https://stackoverflow.com/questions/312443"""
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
 
 
-def neighbors4raw(x: int, y: int) -> list[tuple[int, int]]:
-    return [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
+def neighbors4raw(r: int, c: int) -> list[tuple[int, int]]:
+    return [(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)]
 
 
-def neighbors4(x: int, y: int, x_max: int, y_max: int) -> list[tuple[int, int]]:
+def neighbors4(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
     return [p for p in [
-        (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1),
-    ] if 0 <= p[0] < y_max and 0 <= p[1] < x_max]
+        (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
+    ] if 0 <= p[0] < r_max and 0 <= p[1] < c_max]
 
 
-def neighbors8raw(x: int, y: int) -> list[tuple[int, int]]:
+def neighbors8raw(r: int, c: int) -> list[tuple[int, int]]:
     return [
-        (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1),
-        (x + 1, y + 1), (x - 1, y - 1), (x - 1, y + 1), (x + 1, y - 1),
+        (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
+        (r + 1, c + 1), (r - 1, c - 1), (r - 1, c + 1), (r + 1, c - 1),
     ]
 
 
-def neighbors8(x: int, y: int, x_max: int, y_max: int) -> list[tuple[int, int]]:
+def neighbors8(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
     return [p for p in [
-        (x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1),
-        (x + 1, y + 1), (x - 1, y - 1), (x - 1, y + 1), (x + 1, y - 1),
-    ] if 0 <= p[0] < y_max and 0 <= p[1] < x_max]
+        (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
+        (r + 1, c + 1), (r - 1, c - 1), (r - 1, c + 1), (r + 1, c - 1),
+    ] if 0 <= p[0] < r_max and 0 <= p[1] < c_max]
+
+
+# endregion
 
 
 # replace input.txt w/ whatever your thing is
