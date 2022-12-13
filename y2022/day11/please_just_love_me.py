@@ -19,11 +19,11 @@ class Monkey:
 
 # fricking cursed regex
 monkey_fmt = r"""Monkey (\d+):
-  Starting items: ([\d, ]+)
-  Operation: (new = .*)
-  Test: divisible by (\d+)
-    If true: throw to monkey (\d+)
-    If false: throw to monkey (\d+)"""
+ {2}Starting items: ([\d, ]+)
+ {2}Operation: (new = .*)
+ {2}Test: divisible by (\d+)
+ {4}If true: throw to monkey (\d+)
+ {4}If false: throw to monkey (\d+)"""
 
 monkeys = {}
 with open("this_xmas.txt") as read:
