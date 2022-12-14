@@ -30,8 +30,6 @@ def neighbors8(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
         (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
         (r + 1, c + 1), (r - 1, c - 1), (r - 1, c + 1), (r + 1, c - 1),
     ] if 0 <= p[0] < r_max and 0 <= p[1] < c_max]
-
-
 # endregion
 
 

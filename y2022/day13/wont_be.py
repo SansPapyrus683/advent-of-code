@@ -28,7 +28,7 @@ def packet_cmp(a: list[list | int] | int, b: list[list | int] | int):
 
 pairs = []
 with open("wrapped_under_a_tree.txt") as read:
-    raw_pairs = read.read().split('\n\n')
+    raw_pairs = read.read().split("\n\n")
     for p in raw_pairs:
         p1, p2 = [eval(i) for i in p.strip().split("\n")]
         pairs.append((p1, p2))
