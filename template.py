@@ -34,6 +34,12 @@ def neighbors8(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
 
 def dist(p1: tuple[int, int], p2: tuple[int, int]) -> int:
     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
+
+
+def sign(n: int) -> int:
+    if n == 0:
+        return 0
+    return -1 if n < 0 else 1
 # endregion
 
 
