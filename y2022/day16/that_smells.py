@@ -1,3 +1,5 @@
+"""day 16 part 2, basically p1 but w/ some tweaks at the end"""
+
 import re
 from collections import defaultdict
 import networkx as nx

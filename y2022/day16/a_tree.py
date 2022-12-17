@@ -1,3 +1,5 @@
+"""day 16 part 1"""
+
 import re
 from collections import defaultdict
 import networkx as nx
