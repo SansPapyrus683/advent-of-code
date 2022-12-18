@@ -12,7 +12,7 @@ ORDER = [
 
 P1_ROCK_NUM = 2022
 P2_ROCK_NUM = 1000000000000
-LOOKBACK = 100
+LOOKBACK = 100  # how far down should the rows be hashed?da
 
 with open("joy_and_laughter.txt") as read:
     jets = read.read().strip()
@@ -21,6 +21,7 @@ height = 0
 curr_rock = 0
 rock = ORDER[curr_rock]
 pos = [1 + START_X, height + START_Y + len(rock)]
+# 10k should be large enough, too lazy to make it into a variable
 tower = [[False for _ in range(WIDTH + 2)] for _ in range(10000)]
 for c in range(WIDTH + 2):
     tower[0][c] = True
