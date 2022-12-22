@@ -32,7 +32,7 @@ def password(position: tuple[int, int], dir: Direction):
     return position[0] * 1000 + position[1] * 4 + dir.value
 
 
-with open("input.txt") as read:
+with open("xmas_lights.txt") as read:
     grid, directions = read.read().split("\n\n")
     grid = [" " + r for r in grid.split("\n")]
     directions = directions.strip()
@@ -101,4 +101,4 @@ for d in parsed_dirs:
         elif d == "R":
             direction = direction.right()
 
-print(password(curr, direction))
+print(f"password for p1: {password(curr, direction)}")
