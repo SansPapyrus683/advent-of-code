@@ -38,7 +38,7 @@ cutoff = str_expr.index(ROOT_OP)
 left = str_expr[:cutoff]
 right = eval(str_expr[cutoff + 1:])
 
-lo = 0
+lo = 0  # don't think negative numbers are possible
 hi = 10 ** 30  # this should definitely be large enough
 while lo <= hi:
     humn = (lo + hi) // 2
