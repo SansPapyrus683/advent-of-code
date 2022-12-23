@@ -1,6 +1,7 @@
 """this file contains file io init. & some functions you might find useful"""
 from collections import defaultdict
 from itertools import permutations, combinations
+from copy import deepcopy
 
 
 # region utility
