@@ -5,13 +5,14 @@ P1_STEP_AMT = 10
 PADDING = 50
 
 
-def move(elves: set[tuple[int, int]], pos: tuple[int, int], step: int) -> tuple[int, int]:
-    def neighbors8(r: int, c: int) -> list[tuple[int, int]]:
-        return [
-            (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
-            (r + 1, c + 1), (r - 1, c - 1), (r - 1, c + 1), (r + 1, c - 1),
-        ]
+def neighbors8(r: int, c: int) -> list[tuple[int, int]]:
+    return [
+        (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
+        (r + 1, c + 1), (r - 1, c - 1), (r - 1, c + 1), (r + 1, c - 1),
+    ]
 
+
+def move(elves: set[tuple[int, int]], pos: tuple[int, int], step: int) -> tuple[int, int]:
     for n in neighbors8(pos[0], pos[1]):
         if n in elves:
             break
@@ -75,7 +76,7 @@ while steps < P1_STEP_AMT or moved:
     if not moved and p2_steps == -1:
         p2_steps = steps
 
-assert p1_state is not None
+assert p1_state is not None and p2_steps != -1
 
 min_r = float("inf")
 max_r = -float("inf")
