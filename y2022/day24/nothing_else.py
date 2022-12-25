@@ -1,5 +1,4 @@
 WALL = "#"
-EMPTY = "."
 
 
 def neighbors4(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
