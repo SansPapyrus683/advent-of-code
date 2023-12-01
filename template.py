@@ -48,5 +48,12 @@ def sign(n: int) -> int:
 
 # replace input.txt w/ whatever your thing is
 with open("input.txt") as read:
+    seg1 = True
     for i in read.readlines():
-        pass
+        if i == "\n":
+            seg1 = False
+
+        if seg1:
+            pass
+        else:
+            pass
