@@ -63,8 +63,7 @@ def sign(n: int) -> int:
 # endregion
 
 
-# replace input.txt w/ whatever your thing is
-with open("input.txt") as read:
+with open("the_snowman.txt") as read:
     seg1 = True
     for i in read.readlines():
         if i == "\n":
