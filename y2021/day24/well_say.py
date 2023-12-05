@@ -77,8 +77,6 @@ value2 = []
 for s in segments:
     s = "\n".join(s)
     assert re.match(TO_MATCH, s), "the day1.txt should be like that regex str"
-    print(s)
-    break
     values = [int(v) for v in next(iter(re.findall(TO_MATCH, s)))]
     for add_to, v in zip([div_by, value1, value2], values):
         add_to.append(v)
