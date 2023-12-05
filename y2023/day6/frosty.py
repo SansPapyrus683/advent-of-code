@@ -64,12 +64,6 @@ def sign(n: int) -> int:
 
 
 with open("the_snowman.txt") as read:
-    seg1 = True
-    for i in read.readlines():
-        if i == "\n":
-            seg1 = False
-
-        if seg1:
-            pass
-        else:
+    for g in group(read.readlines(), "\n"):
+        for i in g:
             pass
