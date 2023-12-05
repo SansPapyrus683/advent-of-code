@@ -5,6 +5,17 @@ from copy import deepcopy
 
 
 # region utility
+def group(seq, sep):
+    ret = []
+    for el in seq:
+        if el == sep:
+            yield ret
+            ret = []
+        else:
+            ret.append(el)
+    yield ret
+
+
 def chunks(lst: list, n: int):
     """source: https://stackoverflow.com/questions/312443"""
     for i in range(0, len(lst), n):
@@ -37,6 +48,13 @@ def neighbors8(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
 
 def dist(p1: tuple[int, int], p2: tuple[int, int]) -> int:
     return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
+
+
+def inter(a_start: int, a_end: int, b_start: int, b_end: int) -> tuple[int, int] | None:
+    """intersection of [a_start, a_end] and [b_start, b_end]"""
+    start = max(a_start, b_start)
+    end = min(a_end, b_end)
+    return None if start > end else (start, end)
 
 
 def sign(n: int) -> int:
