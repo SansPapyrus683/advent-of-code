@@ -32,10 +32,8 @@ def exec_lst(
 
 lst = []
 with open("day12.txt") as read:
-    for i in read.readlines():
-        if i.isspace():
-            break
-        args = i.split()
+    for line in read.readlines():
+        args = line.split()
         op = Op[args[0].upper()]
         lst.append((op, *args[1:]))
 
