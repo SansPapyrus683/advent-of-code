@@ -42,9 +42,9 @@ def joker_prio(hand: Collection[str]) -> int:
 
 
 def raw_cmp(a: str, b: str, order: list[str]) -> int:
-    for x, y in zip(a[0], b[0]):
+    for x, y in zip(a, b):
         if x != y:
-            return P2_ORDER.index(y) - P2_ORDER.index(x)
+            return order.index(y) - order.index(x)
     return 0
 
 
