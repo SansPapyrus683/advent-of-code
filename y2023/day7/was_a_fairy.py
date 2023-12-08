@@ -72,7 +72,7 @@ def tot_winnings(ranks: list[tuple[str, int]]) -> int:
 
 
 hands = []
-with open("fairy_tale.txt") as read:
+with open("tale_they_say.txt") as read:
     for h in read.readlines():
         h = h.split()
         hands.append((h[0], int(h[1])))
