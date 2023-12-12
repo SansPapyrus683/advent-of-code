@@ -2,18 +2,18 @@ from typing import Optional, Callable
 from hashlib import md5
 from collections import defaultdict
 from itertools import count
-from functools import lru_cache
+from functools import cache
 
 SALT = "qzyelonm"
 KEY_NUM = 64
 
 
-@lru_cache
+@cache
 def normal_hash(ind: int) -> str:
     return md5((SALT + str(ind)).encode()).hexdigest()
 
 
-@lru_cache
+@cache
 def stretched_hash(ind: int) -> str:
     hsh = normal_hash(ind)
     for _ in range(2016):

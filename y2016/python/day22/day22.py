@@ -1,6 +1,6 @@
 import re
 from dataclasses import dataclass
-from functools import lru_cache
+from functools import cache
 
 
 @dataclass
@@ -10,7 +10,7 @@ class Node:
     avail: int
 
 
-@lru_cache
+@cache
 def neighbors4(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
     return [p for p in [
         (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),

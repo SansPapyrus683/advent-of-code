@@ -1,10 +1,10 @@
-from functools import lru_cache
+from functools import cache
 from collections import deque
 from copy import deepcopy
 from dataclasses import dataclass
 
 
-@lru_cache
+@cache
 def adj(r: int, c: int) -> list[tuple[int, int]]:
     return [
         (r + 1, c), (r - 1, c),
