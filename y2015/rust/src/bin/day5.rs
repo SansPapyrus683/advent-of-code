@@ -54,7 +54,7 @@ fn p2_nice(s: &str) -> bool {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day5.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day5.txt").expect("bruh");
     let str_list: Vec<&str> = read.lines().into_iter().collect();
 
     let mut p1_nice_num = 0;

@@ -5,7 +5,7 @@ use regex::Regex;
 const MAIN: u32 = 0;
 
 fn main() {
-    let read =  fs::read_to_string("input/day12.txt").expect("bruh");
+    let read =  fs::read_to_string("../input/day12.txt").expect("bruh");
 
     let pipe_fmt = Regex::new(r"(\d+) <-> ([\d\s,]+)").unwrap();
 

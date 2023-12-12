@@ -40,7 +40,7 @@ impl Op {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day18.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day18.txt").expect("bruh");
 
     let mut ops = Vec::new();
     for i in read.lines() {

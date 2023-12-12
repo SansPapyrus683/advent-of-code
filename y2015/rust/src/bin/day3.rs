@@ -25,7 +25,7 @@ impl Direction {
 }
 
 fn main() {
-    let directions = fs::read_to_string("input/day3.txt").expect("bruh");
+    let directions = fs::read_to_string("../input/day3.txt").expect("bruh");
 
     let mut dirs = Vec::new();
     for c in directions.chars() {

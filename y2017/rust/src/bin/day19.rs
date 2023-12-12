@@ -22,7 +22,7 @@ impl Dir {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day19.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day19.txt").expect("bruh");
     let mut grid = Vec::new();
     for r in read.lines() {
         let mut row = Vec::new();

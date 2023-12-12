@@ -18,7 +18,7 @@ fn main() {
         r"[a-z]*: capacity (-?\d+), durability (-?\d+), flavor (-?\d+), texture (-?\d+), calories (-?\d+)"
     ).unwrap();
 
-    let read = fs::read_to_string("input/day15.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day15.txt").expect("bruh");
 
     let mut ings = Vec::new();
     for i in read.lines() {

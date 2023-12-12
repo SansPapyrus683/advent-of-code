@@ -34,7 +34,7 @@ fn valid_phrases2<S: AsRef<str>>(phrase: S) -> bool {
 }
 
 fn main() {
-    let lines = fs::read_to_string("input/day4.txt").expect("bruh");
+    let lines = fs::read_to_string("../input/day4.txt").expect("bruh");
 
     let mut valid1 = 0;
     let mut valid2 = 0;

@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let mut digits = fs::read_to_string("input/day1.txt").expect("bruh");
+    let mut digits = fs::read_to_string("../input/day1.txt").expect("bruh");
     digits = digits.trim().parse().unwrap();
 
     let digit_vec: Vec<char> = digits.chars().collect();

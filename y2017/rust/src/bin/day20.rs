@@ -17,7 +17,7 @@ impl Particle {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day20.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day20.txt").expect("bruh");
 
     let mut particles = Vec::new();
     let particle_fmt = Regex::new(concat!(

@@ -1,7 +1,7 @@
 use std::fs;
 
 fn decode_len(s: &str) -> Result<i32, &str> {
-    let mut chars = s.as_bytes();
+    let chars = s.as_bytes();
     if chars[0] != '"' as u8 || chars[s.len() - 1] != '"' as u8 {
         return Err("bro wth");
     }
@@ -34,7 +34,7 @@ fn encode_len(s: &str) -> i32 {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day8.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day8.txt").expect("bruh");
 
     let mut total_og_len = 0;
     let mut total_decode_len = 0;

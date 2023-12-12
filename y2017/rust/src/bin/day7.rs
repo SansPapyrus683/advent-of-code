@@ -43,7 +43,7 @@ fn even_weight(
 }
 
 fn main() {
-    let tower = fs::read_to_string("input/day7.txt").expect("bruh");
+    let tower = fs::read_to_string("../input/day7.txt").expect("bruh");
 
     let prog_fmt = Regex::new(r"([a-z]+) \((\d+)\) -> ([a-z,\s]+)").unwrap();
     let prog_leaf_fmt = Regex::new(r"([a-z]+) \((\d+)\)").unwrap();

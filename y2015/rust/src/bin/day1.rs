@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let read = fs::read_to_string("input/day1.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day1.txt").expect("bruh");
 
     let mut floor = 0;
     let mut entered_basement = false;

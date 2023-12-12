@@ -46,7 +46,7 @@ impl Node {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day22.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day22.txt").expect("bruh");
 
     let mut infected = HashSet::new();
     let mut row_num = 0;

@@ -19,7 +19,7 @@ impl Gift {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day2.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day2.txt").expect("bruh");
     let lines: Vec<&str> = read.split_whitespace().collect();
 
     let gift_fmt = regex::Regex::new(r"(\d+)x(\d+)x(\d+)").unwrap();

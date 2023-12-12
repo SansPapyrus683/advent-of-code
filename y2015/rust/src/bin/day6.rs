@@ -43,7 +43,7 @@ fn main() {
     let off_fmt = Regex::new(r"turn off (\d+),(\d+) through (\d+),(\d+)").unwrap();
     let toggle_fmt = Regex::new(r"toggle (\d+),(\d+) through (\d+),(\d+)").unwrap();
 
-    let read = fs::read_to_string("input/day6.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day6.txt").expect("bruh");
     let mut instructions = Vec::new();
     for i in read.lines() {
         let mut to_use = None;

@@ -2,7 +2,7 @@ use std::collections::HashSet;
 use std::fs;
 
 fn main() {
-    let stream = fs::read_to_string("input/day9.txt")
+    let stream = fs::read_to_string("../input/day9.txt")
         .expect("bruh")
         .trim().to_string();
 

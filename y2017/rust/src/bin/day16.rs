@@ -25,7 +25,7 @@ impl Move {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day16.txt")
+    let read = fs::read_to_string("../input/day16.txt")
         .expect("bruh");
     let read: Vec<&str> = read.split(',').collect();
 

@@ -17,7 +17,7 @@ fn next_state<'a>(scanners: &mut HashMap<&'a u32, (u32, bool)>,
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day13.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day13.txt").expect("bruh");
 
     let layer_fmt = Regex::new(r"(\d+): (\d+)").unwrap();
     let mut firewall = HashMap::new();

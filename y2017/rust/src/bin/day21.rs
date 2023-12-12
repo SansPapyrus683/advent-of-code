@@ -39,7 +39,7 @@ pub fn combs<T: Clone>(img: &Array2<T>) -> Vec<Array2<T>> {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day21.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day21.txt").expect("bruh");
     let rule_fmt = Regex::new(&*format!("([.#{SEP}]+) => ([.#{SEP}]+)")).unwrap();
 
     let mut rules = HashMap::new();

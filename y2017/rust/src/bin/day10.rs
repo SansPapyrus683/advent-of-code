@@ -6,7 +6,7 @@ const ROUND_NUM: u32 = 64;
 const BLOCK_SIZE: usize = 16;
 
 fn main() {
-    let raw_lens = fs::read_to_string("input/day10.txt")
+    let raw_lens = fs::read_to_string("../input/day10.txt")
         .expect("bruh");
 
     let lens: Vec<usize> = raw_lens.split(',')

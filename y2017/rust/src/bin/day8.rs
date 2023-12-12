@@ -47,7 +47,7 @@ impl Op {
 struct Instruction { reg: String, op: Op, l: String, cond: Condition, r: i32 }
 
 fn main() {
-    let raw_prog = fs::read_to_string("input/day8.txt").expect("bruh");
+    let raw_prog = fs::read_to_string("../input/day8.txt").expect("bruh");
 
     let inc_fmt = Regex::new(
         r"([a-z]+) (inc|dec) (-?\d+) if ([a-z]+) (>=|<=|>|<|!=|==) (-?\d+)"

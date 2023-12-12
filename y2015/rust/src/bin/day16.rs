@@ -21,7 +21,7 @@ fn main() {
 
     let aunt_fmt = Regex::new(r"sue (\d+): (.*)").unwrap();
 
-    let read = fs::read_to_string("input/day16.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day16.txt").expect("bruh");
 
     let mut aunts: HashMap<u32, HashMap<String, u32>> = HashMap::new();
     for a in read.lines() {

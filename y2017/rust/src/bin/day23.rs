@@ -43,7 +43,7 @@ fn is_prime(n: i32) -> bool {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day23.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day23.txt").expect("bruh");
     let mut ops = Vec::new();
     for i in read.lines() {
         ops.push(Op::from_str(i));

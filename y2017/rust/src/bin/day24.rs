@@ -44,7 +44,7 @@ fn strongest(comps: &Vec<Comp>) -> (u32, (u32, u32)) {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day24.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day24.txt").expect("bruh");
     let comp_fmt = Regex::new(r"(\d+)/(\d+)").unwrap();
 
     let mut comps = Vec::new();

@@ -39,7 +39,7 @@ fn main() {
     let jie_fmt = Regex::new(r"jie ([a-z]), ([+\-\d]+)").unwrap();
     let jio_fmt = Regex::new(r"jio ([a-z]), ([+\-\d]+)").unwrap();
 
-    let read = fs::read_to_string("input/day23.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day23.txt").expect("bruh");
     let mut ops = Vec::new();
     for i in read.lines() {
         if let Some(m) = hlf_fmt.captures(i) {

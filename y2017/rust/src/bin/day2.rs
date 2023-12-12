@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let sheet = fs::read_to_string("input/day2.txt").expect("bruh");
+    let sheet = fs::read_to_string("../input/day2.txt").expect("bruh");
 
     let mut checksum = 0;
     let mut res_sum = 0;

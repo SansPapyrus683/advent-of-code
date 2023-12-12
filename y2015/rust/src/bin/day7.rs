@@ -71,7 +71,7 @@ fn main() {
     let rs_fmt = Regex::new(r"^(\w+) RSHIFT (\d+) -> (\D+)$").unwrap();
     let not_fmt = Regex::new(r"^NOT (\w+) -> (\D+)$").unwrap();
 
-    let read = fs::read_to_string("input/day7.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day7.txt").expect("bruh");
     let mut wires: HashMap<String, Signal> = HashMap::new();
     for i in read.lines() {
         if let Some(m) = raw_fmt.captures(i) {

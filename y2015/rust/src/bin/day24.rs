@@ -16,7 +16,7 @@ fn split_half(v: &Vec<i32>) -> bool {
 }
 
 fn main() {
-    let read = fs::read_to_string("input/day24.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day24.txt").expect("bruh");
     // assumes divisibility by 3 & 4- also assumes all elements are distinct
     let mut packages = Vec::new();
     for p in read.lines() {

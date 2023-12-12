@@ -20,7 +20,7 @@ fn split_atoms(chem: &String) -> Vec<String> {
 fn main() {
     let rep_fmt = Regex::new("([A-Za-z]*) => ([A-Za-z]*)").unwrap();
     
-    let read = fs::read_to_string("input/day19.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day19.txt").expect("bruh");
     let mut read_rep = true;
     let mut reps: HashMap<String, Vec<Vec<String>>> = HashMap::new();
     let mut chem = Vec::new();

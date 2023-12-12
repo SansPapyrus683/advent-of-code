@@ -26,7 +26,7 @@ fn main() {
         r"([a-z]+) would (lose|gain) (\d+) happiness units by sitting next to ([a-z]+)"
     ).unwrap();
 
-    let read = fs::read_to_string("input/day13.txt").expect("bruh");
+    let read = fs::read_to_string("../input/day13.txt").expect("bruh");
     let mut happiness: HashMap<String, HashMap<String, i32>> = HashMap::new();
     let mut people = HashSet::new();
     for p in read.lines() {
