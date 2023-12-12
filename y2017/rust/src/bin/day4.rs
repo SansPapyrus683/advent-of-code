@@ -1,5 +1,5 @@
 use std::fs;
-use std::collections::{HashSet, HashMap};
+use std::collections::{HashSet};
 
 fn valid_phrases1<S: AsRef<str>>(phrase: S) -> bool {
     let mut seen = HashSet::new();
