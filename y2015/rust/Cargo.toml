@@ -1,5 +1,5 @@
 [package]
-name = "y2015"
+name = "aoc-rust-2015"
 version = "0.1.0"
 edition = "2021"
 

@@ -12,6 +12,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "aoc-rust-2015"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "md5",
+ "ndarray",
+ "regex",
+ "serde_json",
+ "strum",
+ "strum_macros",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -211,16 +224,3 @@ name = "unicode-ident"
 version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c4f5b37a154999a8f3f98cc23a628d850e154479cd94decf3414696e12e31aaf"
-
-[[package]]
-name = "y2015"
-version = "0.1.0"
-dependencies = [
- "itertools",
- "md5",
- "ndarray",
- "regex",
- "serde_json",
- "strum",
- "strum_macros",
-]
