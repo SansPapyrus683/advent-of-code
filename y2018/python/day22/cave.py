@@ -13,7 +13,7 @@ class Region(enum.Enum):
             return [Tool.GEAR, Tool.NONE]
         elif self == Region.NARROW:
             return [Tool.NONE, Tool.TORCH]
-        raise ValueError('bruh')
+        assert False
 
 
 class Tool(enum.Enum):
@@ -28,4 +28,4 @@ class Tool(enum.Enum):
             return [Region.ROCKY, Region.NARROW]
         elif self == Tool.GEAR:
             return [Region.ROCKY, Region.WET]
-        raise ValueError('bruh')
+        assert False

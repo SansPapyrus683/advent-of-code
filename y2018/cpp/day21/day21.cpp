@@ -20,7 +20,7 @@ const int CHECK_REG = 1;
 
 // let's see if c++ is faster
 int main() {
-    std::ifstream read("day21.txt");
+    std::ifstream read("input/day21.txt");
 
     string ip_token;
     int ip;

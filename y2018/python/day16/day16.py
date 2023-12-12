@@ -6,10 +6,10 @@ from ops import Op, op_res
 P1_THRESHOLD = 3
 
 
-before_fmt = r'Before:\s+(\[.*\])'
-after_fmt = r'After:\s+(\[.*\])'
+before_fmt = r"Before:\s+(\[.*\])"
+after_fmt = r"After:\s+(\[.*\])"
 samples = []
-with open('samples.txt') as read:
+with open("input/day16p2.txt") as read:
     lines = read.readlines()
     for s in range(0, len(lines), 4):
         bef, op, aft = [l.strip() for l in lines[s:s + 4]][:3]
@@ -43,7 +43,7 @@ while len(defined) < len(Op):
 rev_defined = {n: o for o, n in defined.items()}
 
 instructions = []
-with open('program.txt') as read:
+with open("input/day16p1.txt") as read:
     for i in read.readlines():
         instructions.append([int(j) for j in i.split()])
 
