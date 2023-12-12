@@ -1,4 +1,4 @@
-/** this runs really slow, but at least it works... */
+/* this runs really slow, but at least it works... */
 
 #include <iostream>
 #include <fstream>
