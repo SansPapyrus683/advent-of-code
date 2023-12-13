@@ -45,7 +45,7 @@ class Battle:
 
     def _step(self):
         # sort by power & tiebreak by initiative for the targeting order
-        self._units.sort(key=lambda u_: (u_.eff_power, u_.init), reverse=True)
+        self._units.sort(key=lambda u_: (u_.eff_power, u_.init_refl), reverse=True)
 
         targeted = [False for _ in range(len(self._units))]
         to_atk = [-1 for _ in range(len(self._units))]
