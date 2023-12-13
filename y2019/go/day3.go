@@ -7,21 +7,46 @@ import (
 	"os"
 	"strings"
 	"strconv"
+	"math"
 )
-
-func getDir(dir rune) (int, int, bool) {
-	switch rune {
-	case 'U': return (0, 1, true)
-	case 'D': return (0, -1, true)
-	case 'L': return (-1, 0, true)
-	case 'R': return (1, 0, true)
-	default: return (0, 0, false)
-	}
-}
 
 type wire struct {
 	mag int
 	dir rune
+}
+
+type pt struct {
+	x int
+	y int
+}
+
+func getDir(dir rune) (pt, bool) {
+	switch dir {
+	case 'U': return pt{0, 1}, true
+	case 'D': return pt{0, -1}, true
+	case 'L': return pt{-1, 0}, true
+	case 'R': return pt{1, 0}, true
+	default: return pt{0, 0}, false
+	}
+}
+
+func (a pt) addPt(b pt) pt {
+	return pt{a.x + b.x, a.y + b.y}
+}
+
+func allPoints(wires []wire) map[pt]int {
+	var at pt
+	dist := 0
+	ret := map[pt]int{at: dist}
+	for _, w := range wires {
+		dir, _ := getDir(w.dir)
+		for i := 0; i < w.mag; i++  {
+			at = at.addPt(dir)
+			dist++
+			ret[at] = dist
+		}
+	}
+	return ret
 }
 
 func day3() {
@@ -31,10 +56,9 @@ func day3() {
 	}
 	defer file.Close()
 
-	scanner := bufio.NewScannier(file)
+	scanner := bufio.NewScanner(file)
 	i := 0
-	var wire1 []wire
-	var wire2 []wire
+	var wire1, wire2 []wire
 	for scanner.Scan() {
 		line := strings.Split(scanner.Text(), ",")
 		for _, w := range line {
@@ -47,4 +71,21 @@ func day3() {
 		}
 		i++
 	}
+
+	pos1, pos2 := allPoints(wire1), allPoints(wire2)
+	_ = pos2
+	p1Closest, p2Closest := math.MaxInt32, math.MaxInt32  // 32 bits should do
+	for p, d1 := range pos1 {
+		if d2, ok := pos2[p]; ok && (p.x != 0 || p.y != 0) {
+			// go is really testing my patience here jesus christ
+			taxiDist := int(math.Abs(float64(p.x))) + int(math.Abs(float64(p.y)))
+			p1Closest = min(p1Closest, taxiDist)
+
+			actualDist := d1 + d2
+			p2Closest = min(p2Closest, actualDist)
+		}
+	}
+
+	fmt.Printf("closest distance (manhattan): %v\n", p1Closest)
+	fmt.Printf("closest distance (actual): %v\n", p2Closest)
 }
