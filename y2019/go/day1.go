@@ -9,7 +9,7 @@ import (
 )
 
 func fuelNeeded(mod int) int {
-	return max(mod / 3 - 2, 0)
+	return max(mod/3-2, 0)
 }
 
 func day1() {

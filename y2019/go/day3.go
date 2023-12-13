@@ -4,10 +4,10 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"os"
-	"strings"
-	"strconv"
 	"math"
+	"os"
+	"strconv"
+	"strings"
 )
 
 type wire struct {
@@ -22,11 +22,16 @@ type pt struct {
 
 func getDir(dir rune) (pt, bool) {
 	switch dir {
-	case 'U': return pt{0, 1}, true
-	case 'D': return pt{0, -1}, true
-	case 'L': return pt{-1, 0}, true
-	case 'R': return pt{1, 0}, true
-	default: return pt{0, 0}, false
+	case 'U':
+		return pt{0, 1}, true
+	case 'D':
+		return pt{0, -1}, true
+	case 'L':
+		return pt{-1, 0}, true
+	case 'R':
+		return pt{1, 0}, true
+	default:
+		return pt{0, 0}, false
 	}
 }
 
@@ -40,7 +45,7 @@ func allPoints(wires []wire) map[pt]int {
 	ret := map[pt]int{at: dist}
 	for _, w := range wires {
 		dir, _ := getDir(w.dir)
-		for i := 0; i < w.mag; i++  {
+		for i := 0; i < w.mag; i++ {
 			at = at.addPt(dir)
 			dist++
 			ret[at] = dist
@@ -65,8 +70,10 @@ func day3() {
 			dir := w[0]
 			mag, _ := strconv.Atoi(w[1:])
 			switch i {
-			case 0: wire1 = append(wire1, wire{mag, rune(dir)})
-			case 1: wire2 = append(wire2, wire{mag, rune(dir)})
+			case 0:
+				wire1 = append(wire1, wire{mag, rune(dir)})
+			case 1:
+				wire2 = append(wire2, wire{mag, rune(dir)})
 			}
 		}
 		i++
@@ -74,7 +81,7 @@ func day3() {
 
 	pos1, pos2 := allPoints(wire1), allPoints(wire2)
 	_ = pos2
-	p1Closest, p2Closest := math.MaxInt32, math.MaxInt32  // 32 bits should do
+	p1Closest, p2Closest := math.MaxInt32, math.MaxInt32 // 32 bits should do
 	for p, d1 := range pos1 {
 		if d2, ok := pos2[p]; ok && (p.x != 0 || p.y != 0) {
 			// go is really testing my patience here jesus christ

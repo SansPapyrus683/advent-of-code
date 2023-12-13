@@ -8,9 +8,9 @@ import (
 	"strings"
 )
 
-const P1_NOUN = 12
-const P1_VERB = 2
-const P2_DESIRED = 19690720
+const p1Noun = 12
+const p1Verb = 2
+const p2Desired = 19690720
 
 func day2() {
 	file, err := os.ReadFile("../input/day2.txt")
@@ -20,7 +20,7 @@ func day2() {
 
 	var prog []int
 	for _, i := range strings.Split(string(file), ",") {
-		val, _ := strconv.Atoi(i)
+		val, _ := strconv.Atoi(strings.TrimSpace(i))
 		prog = append(prog, val)
 	}
 
@@ -33,15 +33,15 @@ func day2() {
 			testProg := startIntcode(prog)
 			testProg.run()
 
-			if noun == P1_NOUN && verb == P1_VERB {
+			if noun == p1Noun && verb == p1Verb {
 				p1Ans = testProg.prog[0]
 			}
-			if testProg.prog[0] == P2_DESIRED {
-				p2Ans = 100 * noun + verb
+			if testProg.prog[0] == p2Desired {
+				p2Ans = 100*noun + verb
 			}
 		}
 	}
 
-	fmt.Printf("register 0 val w/ %v and %v: %v\n", P1_NOUN, P1_VERB, p1Ans)
-	fmt.Printf("comb that gives %v: %v\n", P2_DESIRED, p2Ans)
+	fmt.Printf("register 0 val w/ %v and %v: %v\n", p1Noun, p1Verb, p1Ans)
+	fmt.Printf("comb that gives %v: %v\n", p2Desired, p2Ans)
 }
