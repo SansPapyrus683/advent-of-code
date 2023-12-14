@@ -11,8 +11,8 @@ const (
 	OP_MUL
 	OP_INPUT
 	OP_OUTPUT
-	OP_JIT  // jump if true
-	OP_JIF  // jump if false
+	OP_JIT // jump if true
+	OP_JIF // jump if false
 	OP_LT
 	OP_EQ
 )
@@ -21,6 +21,12 @@ const OP_STOP = 99
 type intcode struct {
 	at   int
 	prog []int
+	finished bool
+
+	// 0 = integer io, 1 = give/get an array, 2 = ascii
+	ioMode     int
+	inputQueue []int
+	output     []int
 }
 
 func startIntcode(prog []int) intcode {
@@ -35,7 +41,9 @@ func opId(op int) int {
 }
 
 func (i *intcode) run() {
-	i.at = 0
+	if i.finished {
+		return
+	}
 run:
 	for i.at < len(i.prog) {
 		op := i.prog[i.at]
@@ -43,7 +51,10 @@ run:
 		case OP_ADD, OP_MUL, OP_LT, OP_EQ:
 			i.opArithmetic()
 		case OP_INPUT, OP_OUTPUT:
-			i.opIO()
+			wait, _ := i.opIO()
+			if wait {
+				return
+			}
 		case OP_JIT, OP_JIF:
 			i.opBranch()
 		case OP_STOP:
@@ -52,6 +63,7 @@ run:
 			panic(fmt.Sprintf("wtf is opcode %v", op))
 		}
 	}
+	i.finished = true
 }
 
 // true for pos, false for imm; positions start from 0
@@ -66,7 +78,7 @@ func isPos(op int, pos int) bool {
 }
 
 func (i *intcode) getParamAt(pos int) int {
-	ret := i.prog[i.at + pos + 1]
+	ret := i.prog[i.at+pos+1]
 	if isPos(i.prog[i.at], pos) {
 		return i.prog[ret]
 	}
@@ -100,20 +112,41 @@ func (i *intcode) opArithmetic() error {
 	return nil
 }
 
-func (i *intcode) opIO() error {
+func (i *intcode) opIO() (bool, error) {
 	switch opId(i.prog[i.at]) {
 	case OP_INPUT:
 		var input int
-		fmt.Scanf("%d", &input)
-		i.prog[i.prog[i.at + 1]] = input
+		
+		switch i.ioMode {
+		case 0:
+			fmt.Scanf("%d", &input)
+		case 1:
+			if len(i.inputQueue) == 0 {
+				return true, nil
+			}
+			input, i.inputQueue = i.inputQueue[0], i.inputQueue[1:]
+		default:
+			return false, errors.New("invalid io mode!")
+		}
+		
+		i.prog[i.prog[i.at+1]] = input
 	case OP_OUTPUT:
-		fmt.Println(i.getParamAt(0))
+		output := i.getParamAt(0)
+
+		switch i.ioMode {
+		case 0:
+			fmt.Println(output)
+		case 1:
+			i.output = append(i.output, output)
+		default:
+			return false, errors.New("invalid io mode")
+		}
 	default:
-		return errors.New("invalid operation")
+		return false, errors.New("invalid operation")
 	}
-	
+
 	i.at += 2
-	return nil
+	return false, nil
 }
 
 func (i *intcode) opBranch() error {
@@ -123,6 +156,7 @@ func (i *intcode) opBranch() error {
 	case OP_JIT:
 		if param1 != 0 {
 			i.at = param2
+		} else {
 			i.at += 3
 		}
 	case OP_JIF:

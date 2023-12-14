@@ -20,6 +20,8 @@ func main() {
 		day5()
 	case 6:
 		day6()
+	case 7:
+		day7()
 	default:
 		fmt.Println("invalid day (or my lazy bum hasn't done it yet)")
 	}

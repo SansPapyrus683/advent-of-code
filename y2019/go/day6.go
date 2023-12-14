@@ -33,7 +33,7 @@ func day6() {
 	calcDepths = func(at string, prev []string) {
 		totDepth += len(prev)
 		prev = append(prev, at)
-		
+
 		switch at {
 		case you:
 			myPath = make([]string, len(prev))
