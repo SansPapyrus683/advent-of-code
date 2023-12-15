@@ -65,6 +65,6 @@ def sign(n: int) -> int:
 
 # replace input.txt w/ whatever your thing is
 with open("input.txt") as read:
-    for g in group(read.readlines(), "\n"):
+    for v, g in enumerate(group(read.readlines(), "\n")):
         for i in g:
             pass
