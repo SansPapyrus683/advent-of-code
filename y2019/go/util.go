@@ -10,10 +10,6 @@ func (a pt) addPt(b pt) pt {
 	return pt{a.r + b.r, a.c + b.c}
 }
 
-func (a pt) asdf(b pt) bool {
-	return a.r == b.r && a.c == b.c
-}
-
 func (a pt) inGrid(rMax, cMax int) bool {
 	return 0 <= a.r && a.r < rMax && 0 <= a.c && a.c < cMax
 }
