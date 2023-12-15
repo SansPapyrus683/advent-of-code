@@ -15,11 +15,6 @@ type wire struct {
 	dir rune
 }
 
-type pt struct {
-	x int
-	y int
-}
-
 func getDir(dir rune) (pt, bool) {
 	switch dir {
 	case 'U':
@@ -33,10 +28,6 @@ func getDir(dir rune) (pt, bool) {
 	default:
 		return pt{0, 0}, false
 	}
-}
-
-func (a pt) addPt(b pt) pt {
-	return pt{a.x + b.x, a.y + b.y}
 }
 
 func allPoints(wires []wire) map[pt]int {
@@ -83,9 +74,9 @@ func day3() {
 	_ = pos2
 	p1Closest, p2Closest := math.MaxInt32, math.MaxInt32 // 32 bits should do
 	for p, d1 := range pos1 {
-		if d2, ok := pos2[p]; ok && (p.x != 0 || p.y != 0) {
+		if d2, ok := pos2[p]; ok && (p.r != 0 || p.c != 0) {
 			// go is really testing my patience here jesus christ
-			taxiDist := int(math.Abs(float64(p.x))) + int(math.Abs(float64(p.y)))
+			taxiDist := abs(p.r) + abs(p.c)
 			p1Closest = min(p1Closest, taxiDist)
 
 			actualDist := d1 + d2

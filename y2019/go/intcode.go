@@ -15,12 +15,14 @@ const (
 	OP_JIF // jump if false
 	OP_LT
 	OP_EQ
+	OP_RB
 )
 const OP_STOP = 99
 
 type intcode struct {
 	at   int
 	prog []int
+	relBase int
 	finished bool
 
 	// 0 = integer io, 1 = give/get an array, 2 = ascii
@@ -57,6 +59,8 @@ run:
 			}
 		case OP_JIT, OP_JIF:
 			i.opBranch()
+		case OP_RB:
+			i.opRelBase()
 		case OP_STOP:
 			break run
 		default:
@@ -67,27 +71,57 @@ run:
 }
 
 // true for pos, false for imm; positions start from 0
-func isPos(op int, pos int) bool {
+func paramMode(op int, pos int) int {
 	strOp := strconv.Itoa(op)
 	for i := 2; i < len(strOp); i++ {
 		if i-2 == pos {
-			return strOp[len(strOp)-i-1] == '0'
+			return int(strOp[len(strOp)-i-1] - '0')
 		}
 	}
-	return true
+	return 0
+}
+
+func (i *intcode) readMem(at int) int {
+	for len(i.prog) <= at {
+		i.prog = append(i.prog, 0)
+	}
+	return i.prog[at]
+}
+
+func (i *intcode) writeMem(at int, val int) {
+	for len(i.prog) <= at {
+		i.prog = append(i.prog, 0)
+	}
+	i.prog[at] = val
+}
+
+func (i *intcode) getMemLoc(pos int) int {
+	ret := i.readMem(i.at+pos+1)
+	switch paramMode(i.prog[i.at], pos) {
+	case 0:
+		return ret
+	case 2:
+		return ret + i.relBase
+	}
+	return -1  // too lazy to do error handling here
 }
 
 func (i *intcode) getParamAt(pos int) int {
-	ret := i.prog[i.at+pos+1]
-	if isPos(i.prog[i.at], pos) {
-		return i.prog[ret]
+	ret := i.readMem(i.at+pos+1)
+	switch paramMode(i.prog[i.at], pos) {
+	case 0:
+		return i.readMem(ret)
+	case 1:
+		return ret
+	case 2:
+		return i.readMem(ret + i.relBase)
 	}
-	return ret
+	return -1
 }
 
 func (i *intcode) opArithmetic() error {
 	param1, param2 := i.getParamAt(0), i.getParamAt(1)
-	storeAt := i.prog[i.at+3]
+	storeAt := i.getMemLoc(2)
 
 	var val int
 	switch opId(i.prog[i.at]) {
@@ -107,7 +141,7 @@ func (i *intcode) opArithmetic() error {
 		return errors.New("invalid operation")
 	}
 
-	i.prog[storeAt] = val
+	i.writeMem(storeAt, val)
 	i.at += 4
 	return nil
 }
@@ -129,7 +163,7 @@ func (i *intcode) opIO() (bool, error) {
 			return false, errors.New("invalid io mode!")
 		}
 		
-		i.prog[i.prog[i.at+1]] = input
+		i.writeMem(i.getMemLoc(0), input)
 	case OP_OUTPUT:
 		output := i.getParamAt(0)
 
@@ -168,5 +202,21 @@ func (i *intcode) opBranch() error {
 	default:
 		return errors.New("invalid operation")
 	}
+
 	return nil
 }
+
+func (i *intcode) opRelBase() error {
+	param1 := i.getParamAt(0)
+
+	switch opId(i.prog[i.at]) {
+	case OP_RB:
+		i.relBase += param1
+	default:
+		return errors.New("invalid operation")
+	}
+
+	i.at += 2
+	return nil
+}
+
