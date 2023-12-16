@@ -2,7 +2,7 @@
 .vscode/
 **/__pycache__
 
-make_day.py
-
 y2015/rust/target/
 y2017/rust/target/
+
+*.swp  # vim files i think
