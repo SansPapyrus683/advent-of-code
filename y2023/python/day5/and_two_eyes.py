@@ -79,7 +79,6 @@ for s in seeds:
 p2_loc = float("inf")
 for s_start, s_amt in chunks(seeds, 2):
     loc = sorted(seed_to_loc(s_start, s_start + s_amt - 1, mappings))
-
     p2_loc = min(p2_loc, loc[0][0])
 
 print(f"actual cancer problem what: {p1_loc}")
