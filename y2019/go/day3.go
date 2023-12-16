@@ -37,7 +37,7 @@ func allPoints(wires []wire) map[pt]int {
 	for _, w := range wires {
 		dir, _ := getDir(w.dir)
 		for i := 0; i < w.mag; i++ {
-			at = at.addPt(dir)
+			at = at.add(dir)
 			dist++
 			ret[at] = dist
 		}

@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"os"
 	"math"
+	"os"
 	"sort"
 	"strings"
 )
@@ -13,7 +13,7 @@ import (
 const p2DestroyAmt = 200
 
 func slope(a, b pt) (int, int, int) {
-	dr, dc := b.r - a.r, b.c - a.c
+	dr, dc := b.r-a.r, b.c-a.c
 	div := abs(gcd(dr, dc))
 	return dr / div, dc / div, div
 }
@@ -43,9 +43,9 @@ func day10() {
 
 	maxDetect := 0
 	var bestPt pt
-	for a, _ := range astLocs {
+	for a := range astLocs {
 		canDetect := 0
-		for b, _ := range astLocs {
+		for b := range astLocs {
 			if a == b {
 				continue
 			}
@@ -64,7 +64,7 @@ func day10() {
 				canDetect++
 			}
 		}
-		
+
 		if canDetect > maxDetect {
 			maxDetect = canDetect
 			bestPt = a
@@ -73,16 +73,16 @@ func day10() {
 
 	type asteroid struct {
 		dist float64
-		loc pt
+		loc  pt
 	}
 	slopeMap := make(map[float64][]asteroid)
-	for a, _ := range astLocs {
+	for a := range astLocs {
 		if a == bestPt {
 			continue
 		}
-		
+
 		dr, dc, div := slope(bestPt, a)
-		hyp := math.Sqrt(float64(dr * dr + dc * dc))
+		hyp := math.Sqrt(float64(dr*dr + dc*dc))
 		ang := math.Asin(float64(dc) / hyp)
 		if dr > 0 {
 			ang = math.Pi + ang
@@ -107,7 +107,8 @@ func day10() {
 	})
 
 	at := 0
-	for ; slopes[at].ang < 0; at++ {}  // at least i can do this
+	for ; slopes[at].ang < 0; at++ {
+	} // at least i can do this
 	var p2Asteroid pt
 	for i := 0; i < p2DestroyAmt; i++ {
 		for len(slopes[at].pts) == 0 {
@@ -117,11 +118,11 @@ func day10() {
 		destroyed := currLine[0].loc
 		slopes[at].pts = currLine[1:]
 		at = (at + 1) % len(slopes)
-		if i == p2DestroyAmt - 1 {
+		if i == p2DestroyAmt-1 {
 			p2Asteroid = destroyed
 		}
 	}
-	p2AstId := p2Asteroid.c * 100 + p2Asteroid.r
+	p2AstId := p2Asteroid.c*100 + p2Asteroid.r
 
 	fmt.Printf("max detectable asteroids: %v\n", maxDetect)
 	fmt.Printf("id of destroyed asteroid #%v: %v\n", p2DestroyAmt, p2AstId)

@@ -20,9 +20,9 @@ const (
 const OP_STOP = 99
 
 type intcode struct {
-	at   int
-	prog []int
-	relBase int
+	at       int
+	prog     []int
+	relBase  int
 	finished bool
 
 	// 0 = integer io, 1 = give/get an array, 2 = ascii
@@ -96,18 +96,18 @@ func (i *intcode) writeMem(at int, val int) {
 }
 
 func (i *intcode) getMemLoc(pos int) int {
-	ret := i.readMem(i.at+pos+1)
+	ret := i.readMem(i.at + pos + 1)
 	switch paramMode(i.prog[i.at], pos) {
 	case 0:
 		return ret
 	case 2:
 		return ret + i.relBase
 	}
-	return -1  // too lazy to do error handling here
+	return -1 // too lazy to do error handling here
 }
 
 func (i *intcode) getParamAt(pos int) int {
-	ret := i.readMem(i.at+pos+1)
+	ret := i.readMem(i.at + pos + 1)
 	switch paramMode(i.prog[i.at], pos) {
 	case 0:
 		return i.readMem(ret)
@@ -150,7 +150,7 @@ func (i *intcode) opIO() (bool, error) {
 	switch opId(i.prog[i.at]) {
 	case OP_INPUT:
 		var input int
-		
+
 		switch i.ioMode {
 		case 0:
 			fmt.Scanf("%d", &input)
@@ -162,7 +162,7 @@ func (i *intcode) opIO() (bool, error) {
 		default:
 			return false, errors.New("invalid io mode!")
 		}
-		
+
 		i.writeMem(i.getMemLoc(0), input)
 	case OP_OUTPUT:
 		output := i.getParamAt(0)
@@ -219,4 +219,3 @@ func (i *intcode) opRelBase() error {
 	i.at += 2
 	return nil
 }
-

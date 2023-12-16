@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"log"
+	"math"
 	"os"
 	"strings"
-	"math"
 )
 
 const width = 25
@@ -34,7 +34,7 @@ func day8() {
 			}
 		}
 		layers = append(layers, layer)
-		
+
 		if digits[0] < minZeros {
 			minZeros = digits[0]
 			p1Ans = digits[1] * digits[2]

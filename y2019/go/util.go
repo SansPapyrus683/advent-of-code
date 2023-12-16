@@ -1,12 +1,21 @@
 package main
 
+import (
+	"strconv"
+)
+
+func betterAtoi(s string) int {
+	ret, _ := strconv.Atoi(s) // JUST THROW AN ERROR FOR CHRIST'S SAKE, GO!
+	return ret
+}
+
 // honestly going by array row and column is usually easier than x & y so...
 type pt struct {
 	r int
 	c int
 }
 
-func (a pt) addPt(b pt) pt {
+func (a pt) add(b pt) pt {
 	return pt{a.r + b.r, a.c + b.c}
 }
 
@@ -37,5 +46,5 @@ func gcd(a, b int) int {
 	if b == 0 {
 		return a
 	}
-	return gcd(b, a % b)
+	return gcd(b, a%b)
 }
