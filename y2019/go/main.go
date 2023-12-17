@@ -34,6 +34,16 @@ func main() {
 		day12()
 	case 13:
 		day13()
+	case 14:
+		day14()
+	case 15:
+		day15()
+	case 16:
+		day16()
+	case 17:
+		day17()
+	case 21, 25:
+		typingIntcode(day)
 	default:
 		fmt.Println("invalid day (or my lazy bum hasn't done it yet)")
 	}

@@ -19,6 +19,24 @@ func (a pt) add(b pt) pt {
 	return pt{a.r + b.r, a.c + b.c}
 }
 
+func (a pt) neighbors4Raw() []pt {
+	var ret []pt
+	for _, delta := range []pt{{0, -1}, {0, 1}, {1, 0}, {-1, 0}} {
+		ret = append(ret, a.add(delta))
+	}
+	return ret
+}
+
+func (a pt) neighbors4(rMax, cMax int) []pt {
+	var ret []pt
+	for _, n := range a.neighbors4Raw() {
+		if n.inGrid(rMax, cMax) {
+			ret = append(ret, n)
+		}
+	}
+	return ret
+}
+
 func (a pt) inGrid(rMax, cMax int) bool {
 	return 0 <= a.r && a.r < rMax && 0 <= a.c && a.c < cMax
 }

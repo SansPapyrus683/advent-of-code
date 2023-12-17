@@ -3,7 +3,10 @@ package main
 import (
 	"errors"
 	"fmt"
+	"bufio"
 	"strconv"
+	"os"
+	"math"
 )
 
 const (
@@ -159,6 +162,19 @@ func (i *intcode) opIO() (bool, error) {
 				return true, nil
 			}
 			input, i.inputQueue = i.inputQueue[0], i.inputQueue[1:]
+		case 2:
+			if len(i.inputQueue) == 0 {
+				var input string
+				scanner := bufio.NewScanner(os.Stdin)
+				if scanner.Scan() {
+					input = scanner.Text()
+				}
+				input += "\n"
+				for _, c := range input {
+					i.inputQueue = append(i.inputQueue, int(c))
+				}
+			}
+			input, i.inputQueue = i.inputQueue[0], i.inputQueue[1:]
 		default:
 			return false, errors.New("invalid io mode!")
 		}
@@ -172,6 +188,12 @@ func (i *intcode) opIO() (bool, error) {
 			fmt.Println(output)
 		case 1:
 			i.output = append(i.output, output)
+		case 2:
+			if 0 <= output && output < math.MaxUint8 {
+				fmt.Print(string(output))
+			} else {
+				fmt.Println("bad char (maybe just a #?):", output)
+			}
 		default:
 			return false, errors.New("invalid io mode")
 		}

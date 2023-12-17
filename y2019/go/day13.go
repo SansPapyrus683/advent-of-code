@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"slices"
 	"strconv"
 	"strings"
-	"slices"
 )
 
 func toBoard(output []int) ([][]int, int) {
@@ -16,9 +16,9 @@ func toBoard(output []int) ([][]int, int) {
 		maxR, maxC = max(maxR, r), max(maxC, c)
 	}
 
-	board := make([][]int, maxR + 1)
+	board := make([][]int, maxR+1)
 	for r := range board {
-		board[r] = make([]int, maxC + 1)
+		board[r] = make([]int, maxC+1)
 	}
 	score := -1
 	for i := 0; i < len(output); i += 3 {
@@ -29,7 +29,7 @@ func toBoard(output []int) ([][]int, int) {
 			board[r][c] = tid
 		}
 	}
-	
+
 	return board, score
 }
 
@@ -61,7 +61,7 @@ func day13() {
 	p := startIntcode(prog)
 	p.ioMode = 1
 	p.run()
-	
+
 	board, _ := toBoard(p.output)
 	blockNum := 0
 	for r := range board {
@@ -72,7 +72,7 @@ func day13() {
 		}
 	}
 
-	prog[0] = 2  // insert 2 quarters or smth idk
+	prog[0] = 2 // insert 2 quarters or smth idk
 	p = startIntcode(prog)
 	p.ioMode = 1
 	var score int
@@ -82,7 +82,7 @@ func day13() {
 			p.inputQueue = append(p.inputQueue, input)
 		}
 		p.run()
-		
+
 		board, score = toBoard(p.output)
 		var paddle, ball pt
 		for ri := range board {
@@ -97,7 +97,7 @@ func day13() {
 		}
 
 		// printBoard(board, score)  // if you wanna...
-		
+
 		switch {
 		case paddle.c < ball.c:
 			input = 1
