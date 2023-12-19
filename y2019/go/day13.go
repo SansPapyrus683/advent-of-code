@@ -79,7 +79,7 @@ func day13() {
 	input := -2
 	for !p.finished {
 		if slices.Contains([]int{-1, 0, 1}, input) {
-			p.inputQueue = append(p.inputQueue, input)
+			p.input = append(p.input, input)
 		}
 		p.run()
 

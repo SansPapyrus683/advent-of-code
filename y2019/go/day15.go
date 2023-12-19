@@ -54,7 +54,7 @@ func day15() {
 	moveSearch:
 		for testD := turnRight(currDir); ; testD = turnLeft(testD) {
 			move := movePrio[testD]
-			p.inputQueue = append(p.inputQueue, move)
+			p.input = append(p.input, move)
 			p.run()
 			output := p.output[len(p.output)-1]
 

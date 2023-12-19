@@ -66,3 +66,9 @@ func gcd(a, b int) int {
 	}
 	return gcd(b, a%b)
 }
+
+func strSet(s string, i int, c rune) string {
+	strArr := []rune(s)
+	strArr[i] = c
+	return string(strArr)
+}

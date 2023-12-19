@@ -31,7 +31,7 @@ type recipe struct {
 func oreNeeded(fuel int, recipes map[string]recipe) int {
 	have := make(map[string]int)
 	ore := 0
-	var process func(name string, amt int)
+	var process func(string, int)
 	process = func(name string, amt int) {
 		if name == "ORE" {
 			ore += amt

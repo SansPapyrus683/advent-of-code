@@ -19,7 +19,7 @@ func paintShip(prog []int, startColor int) map[pt]int {
 	robot := startIntcode(prog)
 	robot.ioMode = 1
 	for !robot.finished {
-		robot.inputQueue = append(robot.inputQueue, panels[at])
+		robot.input = append(robot.input, panels[at])
 		robot.run()
 		toPaint := robot.output[len(robot.output)-2]
 		dir := robot.output[len(robot.output)-1]

@@ -1,12 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"errors"
 	"fmt"
-	"bufio"
-	"strconv"
-	"os"
 	"math"
+	"os"
+	"strconv"
 )
 
 const (
@@ -29,9 +29,9 @@ type intcode struct {
 	finished bool
 
 	// 0 = integer io, 1 = give/get an array, 2 = ascii
-	ioMode     int
-	inputQueue []int
-	output     []int
+	ioMode int
+	input  []int
+	output []int
 }
 
 func startIntcode(prog []int) intcode {
@@ -158,12 +158,12 @@ func (i *intcode) opIO() (bool, error) {
 		case 0:
 			fmt.Scanf("%d", &input)
 		case 1:
-			if len(i.inputQueue) == 0 {
+			if len(i.input) == 0 {
 				return true, nil
 			}
-			input, i.inputQueue = i.inputQueue[0], i.inputQueue[1:]
+			input, i.input = i.input[0], i.input[1:]
 		case 2:
-			if len(i.inputQueue) == 0 {
+			if len(i.input) == 0 {
 				var input string
 				scanner := bufio.NewScanner(os.Stdin)
 				if scanner.Scan() {
@@ -171,10 +171,10 @@ func (i *intcode) opIO() (bool, error) {
 				}
 				input += "\n"
 				for _, c := range input {
-					i.inputQueue = append(i.inputQueue, int(c))
+					i.input = append(i.input, int(c))
 				}
 			}
-			input, i.inputQueue = i.inputQueue[0], i.inputQueue[1:]
+			input, i.input = i.input[0], i.input[1:]
 		default:
 			return false, errors.New("invalid io mode!")
 		}

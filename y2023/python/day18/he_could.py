@@ -10,6 +10,7 @@ DIG_TO_DIR = ["R", "D", "L", "U"]
 
 
 def shoelace(x_y: list[tuple[int, int]]) -> float:
+    """https://stackoverflow.com/a/58515054/12128483"""
     x_y = np.array(x_y)
     x_y = x_y.reshape(-1, 2)
     x = x_y[:, 0]

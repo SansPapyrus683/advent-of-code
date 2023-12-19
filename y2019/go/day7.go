@@ -62,7 +62,7 @@ func day7() {
 		for amp := 0; amp < ampNum; amp++ {
 			intcodeAmp := startIntcode(prog)
 			intcodeAmp.ioMode = 1
-			intcodeAmp.inputQueue = []int{config[amp], output}
+			intcodeAmp.input = []int{config[amp], output}
 			intcodeAmp.run()
 			output = intcodeAmp.output[0]
 		}
@@ -73,13 +73,13 @@ func day7() {
 		for a := 0; a < ampNum; a++ {
 			p := startIntcode(prog)
 			p.ioMode = 1
-			p.inputQueue = []int{config[a] + p2Offset}
+			p.input = []int{config[a] + p2Offset}
 			amps = append(amps, p)
 		}
 		for !amps[0].finished {
 			for i := range amps {
 				a := &amps[i]
-				a.inputQueue = append(a.inputQueue, output)
+				a.input = append(a.input, output)
 				a.run()
 				output = a.output[len(a.output)-1]
 			}

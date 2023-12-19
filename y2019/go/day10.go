@@ -7,7 +7,6 @@ import (
 	"math"
 	"os"
 	"sort"
-	"strings"
 )
 
 const p2DestroyAmt = 200
@@ -28,8 +27,7 @@ func day10() {
 	scanner := bufio.NewScanner(file)
 	var asteroids []string
 	for scanner.Scan() {
-		row := strings.TrimSpace(scanner.Text())
-		asteroids = append(asteroids, row)
+		asteroids = append(asteroids, scanner.Text())
 	}
 
 	astLocs := make(map[pt]bool)

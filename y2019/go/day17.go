@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-const PART = '#'  // character for scaffolding idk
+const PART = '#' // character for scaffolding idk
 const ROBOT = '^'
 
 func day17() {
@@ -62,22 +62,22 @@ func day17() {
 			}
 			if filled == 4 {
 				alignSum += r * c
-				distReq++  // intersections are travelled over twice
+				distReq++ // intersections are travelled over twice
 			}
 		}
 	}
 
-	type move struct {  // sometimes i just hate static typing in general
+	type move struct { // sometimes i just hate static typing in general
 		isTurn bool
 		turn   rune
 		dist   int
 	}
 	var moves []move
 
-	dirs := []pt{pt{-1, 0}, pt{0, 1}, pt{1, 0}, pt{0, -1}}
+	dirs := []pt{{-1, 0}, {0, 1}, {1, 0}, {0, -1}}
 	at := robot
 	currDir := 0
-	travelled := 1  // 1 for the one the robot is curretly on
+	travelled := 1 // 1 for the one the robot is curretly on
 	// this search makes alot of assumptions about the grid so beware
 	for travelled < distReq {
 		delta := dirs[currDir]
@@ -105,7 +105,7 @@ func day17() {
 			}
 		}
 	}
-	
+
 	fmt.Printf("sum of alignment parameters: %v\n", alignSum)
 
 	fmt.Println("and here's all the moves needed:")
@@ -115,7 +115,7 @@ func day17() {
 		} else {
 			fmt.Print(m.dist)
 		}
-		if i < len(moves) - 1 {
+		if i < len(moves)-1 {
 			fmt.Print(",")
 		}
 	}
