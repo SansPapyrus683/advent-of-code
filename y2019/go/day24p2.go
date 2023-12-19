@@ -16,7 +16,7 @@ type bugPos struct {
 }
 
 func (p bugPos) neighbors() []bugPos {
-	m := side / 2  // just a shorthand
+	m := side / 2 // just a shorthand
 	if (p.p == pt{m, m}) {
 		return nil
 	}
@@ -32,30 +32,30 @@ func (p bugPos) neighbors() []bugPos {
 	if p.p.r == 0 {
 		ret = append(ret, bugPos{pt{m - 1, m}, p.z + 1})
 	}
-	if p.p.r == side - 1 {
+	if p.p.r == side-1 {
 		ret = append(ret, bugPos{pt{m + 1, m}, p.z + 1})
 	}
 	if p.p.c == 0 {
 		ret = append(ret, bugPos{pt{m, m - 1}, p.z + 1})
 	}
-	if p.p.c == side - 1 {
+	if p.p.c == side-1 {
 		ret = append(ret, bugPos{pt{m, m + 1}, p.z + 1})
 	}
-	
+
 	switch {
-	case p.p.c == m && p.p.r == m - 1:
+	case p.p.c == m && p.p.r == m-1:
 		for i := 0; i < side; i++ {
 			ret = append(ret, bugPos{pt{0, i}, p.z - 1})
 		}
-	case p.p.c == m && p.p.r == m + 1:
+	case p.p.c == m && p.p.r == m+1:
 		for i := 0; i < side; i++ {
 			ret = append(ret, bugPos{pt{side - 1, i}, p.z - 1})
 		}
-	case p.p.r == m && p.p.c == m - 1:
+	case p.p.r == m && p.p.c == m-1:
 		for i := 0; i < side; i++ {
 			ret = append(ret, bugPos{pt{i, 0}, p.z - 1})
 		}
-	case p.p.r == m && p.p.c == m + 1:
+	case p.p.r == m && p.p.c == m+1:
 		for i := 0; i < side; i++ {
 			ret = append(ret, bugPos{pt{i, side - 1}, p.z - 1})
 		}
