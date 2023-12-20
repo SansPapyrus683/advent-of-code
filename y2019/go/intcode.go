@@ -73,7 +73,6 @@ run:
 	i.finished = true
 }
 
-// true for pos, false for imm; positions start from 0
 func paramMode(op int, pos int) int {
 	strOp := strconv.Itoa(op)
 	for i := 2; i < len(strOp); i++ {

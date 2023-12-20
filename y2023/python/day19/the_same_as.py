@@ -51,6 +51,7 @@ while frontier:
         negate = []
         for cond, n in workflow[i][:-1]:
             next_up.append((n, reqs + negate + [cond]))
+            # why can't i use chars for translate???
             cond = cond.translate({ord(">"): "<=", ord("<"): ">="})
             negate.append(cond)
 
@@ -62,6 +63,7 @@ acc_ranges = []
 for ar in acc_reqs:
     use_range = {c: list(RANGE) for c in "xmas"}
     for r in ar:
+        # if only there were a better way to do this :sob:
         if "<=" in r:
             x, y = r.split("<=")
             y = int(y)

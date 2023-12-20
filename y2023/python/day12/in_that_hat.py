@@ -1,4 +1,3 @@
-"""an alternate solution involving recursion and cashing"""
 from functools import cache
 
 UNFOLD_FACTOR = 5
