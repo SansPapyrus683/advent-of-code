@@ -1,9 +1,12 @@
+WALL = "#"
 P1_STEPS = 64
 P2_STEPS = 26501365
 
 
-def neighbors4raw(r: int, c: int) -> list[tuple[int, int]]:
-    return [(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)]
+def neighbors4(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
+    return [p for p in [
+        (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
+    ] if 0 <= p[0] < r_max and 0 <= p[1] < c_max]
 
 
 with open("was_hot_that_day.txt") as read:
@@ -17,27 +20,49 @@ assert {len(grid)} == {len(grid[r]) for r in range(len(grid))}, "grid must be sq
 assert grid[start[0]][start[1]] == "S", "elf has to start in the middle"
 assert side % 2 == 1, "side length has to be odd"
 
-steps = [1]  # after 0 steps we can only be @ the start
-frontier = {start}
-for s in range(max(P1_STEPS, mid + 2 * side)):
-    next_up = set()
-    for r, c in frontier:
-        for nr, nc in neighbors4raw(r, c):
-            if grid[nr % len(grid)][nc % len(grid[0])] != "#":
-                next_up.add((nr, nc))
-    frontier = next_up
-    steps.append(len(frontier))
+p1_frontier = {start}
 
-# doing math in programming really sucks huh
-x, y, z = [steps[mid + d * side] for d in range(3)]
-c = x
-a = (z - x) // 2 - (y - x)
-b = y - x - a
+steps = 0
+for _ in range(P1_STEPS):
+    next_up = set()
+    for r, c in p1_frontier:
+        for nr, nc in neighbors4(r, c, side, side):
+            if grid[nr][nc] != WALL:
+                next_up.add((nr, nc))
+    p1_frontier = next_up
+    steps += 1
+
+p2_frontier = [start]
+visited = {start}
+while p2_frontier:
+    r, c = p2_frontier.pop()
+    for nr, nc in neighbors4(r, c, side, side):
+        if grid[nr][nc] != WALL and (nr, nc) not in visited:
+            visited.add((nr, nc))
+            p2_frontier.append((nr, nc))
+
+dots = [0, 0]
+corners = [0, 0]
+for r in range(side):
+    for c in range(side):
+        if (r, c) not in visited:
+            continue
+        parity = (r + c) % 2
+        dots[parity] += 1
+        if abs(r - start[0]) + abs(c - start[1]) > mid:
+            corners[parity] += 1
 
 assert (P2_STEPS - mid) % side == 0, "i think something's wrong w/ your input"
 extend = (P2_STEPS - mid) // side
 
-p2_reachable = a * extend ** 2 + b * extend + c
+start_parity = P2_STEPS % 2
+bound_parity = (start_parity + extend) % 2
+p2_reachable = (
+        sum(dots) * extend**2
+        + dots[bound_parity] * (2 * extend + 1)
+        - corners[bound_parity] * (extend + 1)
+        + corners[1 - bound_parity] * extend
+)
 
-print(f"aoc might be bad for my mental health {steps[P1_STEPS]}")
-print(f"but i require the dopamine of leaderboards {p2_reachable}")
+print(f"next day again...turns out i sillied my p2: {len(p1_frontier)}")
+print(f"turns out not every dot is reachable :sob: {p2_reachable}")
