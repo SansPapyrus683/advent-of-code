@@ -58,7 +58,7 @@ extend = (P2_STEPS - mid) // side
 start_parity = P2_STEPS % 2
 bound_parity = (start_parity + extend) % 2
 p2_reachable = (
-        sum(dots) * extend**2
+        sum(dots) * extend ** 2
         + dots[bound_parity] * (2 * extend + 1)
         - corners[bound_parity] * (extend + 1)
         + corners[1 - bound_parity] * extend
