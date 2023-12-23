@@ -17,7 +17,9 @@ def chunks(lst: list, n: int):
         yield lst[i:i + n]
 
 
-def inter(a_start: int, a_end: int, b_start: int, b_end: int) -> tuple[int, int] | None:
+def inter(
+        a_start: int, a_end: int, b_start: int, b_end: int
+) -> tuple[int, int] | None:
     start = max(a_start, b_start)
     end = min(a_end, b_end)
     return None if start > end else (start, end)
