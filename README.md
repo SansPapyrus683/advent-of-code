@@ -12,4 +12,5 @@ but hey, enjoy these solutions that are actually good (i hope)
 
 * **rust:** all the inputs are read from `../input` instead of straight `input`
   bc for some reason intellij can't build the project if i specify a different cwd(????)
+* **go:** yeah, these also read from `../input` because of `go run .` and i'm too lazy to figure out how to run that main from another directory lol
 * **haskell:** i gave up lmao probably won't ever finish 2019

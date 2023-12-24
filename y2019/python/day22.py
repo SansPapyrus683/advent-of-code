@@ -1,3 +1,4 @@
+"""explanation: https://sanspapyrus683.github.io/content/editorials/aoc-cards.html"""
 import enum
 import re
 
