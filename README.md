@@ -14,3 +14,4 @@ but hey, enjoy these solutions that are actually good (i hope)
   bc for some reason intellij can't build the project if i specify a different cwd(????)
 * **go:** yeah, these also read from `../input` because of `go run .` and i'm too lazy to figure out how to run that main from another directory lol
 * **haskell:** i gave up lmao probably won't ever finish 2019
+* **python:** i think the only 3rd party packages i've used so far are numpy and sympy, so yeah
