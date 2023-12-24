@@ -63,7 +63,6 @@ def sign(n: int) -> int:
 # endregion
 
 
-# replace input.txt w/ whatever your thing is
 with open("input.txt") as read:
     arr = []
     for v, g in enumerate(group(read.readlines(), "\n")):
