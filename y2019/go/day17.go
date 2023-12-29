@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-const PART = '#' // character for scaffolding idk
-const ROBOT = '^'
+const part = '#' // character for scaffolding idk
+const robot = '^'
 
 func day17() {
 	file, err := os.ReadFile("../input/day17.txt")
@@ -35,21 +35,21 @@ func day17() {
 	isPart := func(p pt) bool {
 		inGrid := p.inGrid(len(grid), len(grid[0]))
 		if inGrid {
-			return grid[p.r][p.c] == PART || grid[p.r][p.c] == ROBOT
+			return grid[p.r][p.c] == part || grid[p.r][p.c] == robot
 		}
 		return false
 	}
 
 	alignSum := 0
 	distReq := 0
-	var robot pt
+	var robPos pt
 	for r := range grid {
 		for c := range grid[0] {
-			if grid[r][c] != PART && grid[r][c] != ROBOT {
+			if grid[r][c] != part && grid[r][c] != robot {
 				continue
 			}
-			if grid[r][c] == ROBOT {
-				robot = pt{r, c}
+			if grid[r][c] == robot {
+				robPos = pt{r, c}
 			}
 
 			distReq++
@@ -75,7 +75,7 @@ func day17() {
 	var moves []move
 
 	dirs := []pt{{-1, 0}, {0, 1}, {1, 0}, {0, -1}}
-	at := robot
+    at := robPos
 	currDir := 0
 	travelled := 1 // 1 for the one the robot is curretly on
 	// this search makes alot of assumptions about the grid so beware

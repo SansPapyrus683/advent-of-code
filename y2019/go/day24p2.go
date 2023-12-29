@@ -94,7 +94,7 @@ func day24p2() {
 
 	for s := 1; s <= simSteps; s++ {
 		newBugs := make(map[bugPos]bool)
-		for d := -s; d <= s; d++ {
+		for d := -s / 2 - 1; d <= s / 2 + 1; d++ {
 			for r := 0; r < side; r++ {
 				for c := 0; c < side; c++ {
 					curr := bugPos{pt{r, c}, d}
