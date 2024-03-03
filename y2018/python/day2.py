@@ -1,4 +1,4 @@
-box_ids = [b.strip() for b in open('input/day2.txt').readlines()]
+box_ids = [b.strip() for b in open("input/day2.txt").readlines()]
 
 exactly_two = 0
 exactly_three = 0

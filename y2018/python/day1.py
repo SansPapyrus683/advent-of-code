@@ -1,4 +1,4 @@
-freq_changes = [int(i) for i in open('input/day1.txt').readlines()]
+freq_changes = [int(i) for i in open("input/day1.txt").readlines()]
 
 print(f"final freq: {sum(freq_changes)}")
 

@@ -7,7 +7,7 @@ const DIRS: [(i32, i32); 8] = [
 ];
 
 fn cell_val(n: u32) -> (i32, i32) {
-    // https://math.stackexchange.com/questions/163080 (second answer)
+    // https://math.stackexchange.com/a/163101/713952
     let n = n as i32;
     let k = (((n as f64).sqrt() - 1.0) / 2.0).ceil() as i32;
     let mut t = 2 * k + 1;
