@@ -14,28 +14,34 @@ proc evenWeight(
     return (info[0], none(int))
   
   var
-    branches = initCountTable[int]()
+    branches: Table[int, seq[int]]
     toAdjust = none(int)
   for t in info[1]:
     let (weight, adj) = evenWeight(t, supporting)
-    branches.inc(weight, 1)
+    if not (weight in branches):
+      branches[weight] = @[]
+    branches[weight].add(supporting[t][0])
     if adj.isSome:
       toAdjust = adj
   
   case branches.len:
     of 1:
       for w, a in branches.pairs:
-        return (w * a + info[0], toAdjust)
+        return (w * a.len + info[0], toAdjust)
+
     of 2:
       if toAdjust.isSome:
         raise newException(ValueError, "bad tree idk man")
       
       let
         tmp = branches.pairs.toSeq
-        good = if tmp[0][1] == 1: 1 else: 0
-        changeTo = tmp[good][0]
-      echo branches
-      return (changeTo * (tmp[good][1] + 1) + info[0], some(changeTo))
+        bad = if tmp[0][1].len == 1: 0 else: 1
+        good = 1 - bad
+        badDelta = tmp[good][0] - tmp[bad][0]
+        changeTo = tmp[bad][1][0] + badDelta
+        newWeight = tmp[good][0] * (tmp[good][1].len + 1)
+
+      return (newWeight + info[0], some(changeTo))
     else:
         raise newException(ValueError, "bad tree idk man")
 

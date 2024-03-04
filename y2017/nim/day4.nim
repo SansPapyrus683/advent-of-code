@@ -29,9 +29,8 @@ readFile("input/day4.txt")
   .strip()
   .splitLines()
   .apply(proc(p: string) =
-    valid1 += (if validPhrases1(ref p): 1 else: 0)
-    valid2 += (if validPhrases2(ref p): 1 else: 0))
+    valid1 += (if validPhrases1(p): 1 else: 0)
+    valid2 += (if validPhrases2(p): 1 else: 0))
 
 echo "# of valid passphrases (p1): ", valid1
 echo "# of valid passphrases (p2): ", valid2
-
