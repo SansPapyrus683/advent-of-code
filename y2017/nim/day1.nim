@@ -16,3 +16,4 @@ for i in 0 ..< cLen:
 
 echo "solution to p1 captcha: $1" % [$p1Tot]
 echo "solution to p2 captcha: $1" % [$p2Tot]
+

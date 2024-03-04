@@ -1,6 +1,6 @@
 import math
 import strutils
-import std/tables
+import tables
 
 const INPUT = 347991
 
@@ -47,3 +47,4 @@ while true:
 
   seen[pos] = posTotal
   inc at
+

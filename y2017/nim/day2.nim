@@ -21,3 +21,4 @@ for row in sheet:
 
 echo "checksum: $1" % [$checksum]
 echo "sum of rows: $1" % [$rowSum]
+
