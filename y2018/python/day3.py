@@ -1,7 +1,7 @@
 claims = []
 max_r = 0
 max_c = 0
-with open('input/day3.txt') as read:
+with open("input/day3.txt") as read:
     for c in read.readlines():
         c = ''.join(i if i.isdigit() else ' ' for i in c)
         c = [int(i) for i in c.split()]
@@ -29,6 +29,8 @@ for claim in claims:
     valid = True
     for r in range(claim[1], claim[1] + claim[3]):
         for c in range(claim[2], claim[2] + claim[4]):
+            if r == 207 and c == 472:
+                print(claim[0])
             if fabric[r][c] > 1:
                 valid = False
                 break
