@@ -11,12 +11,13 @@ fn main() {
     let mut curr_freq = 0;
     let mut seen_freqs = HashSet::from([curr_freq]);
     let mut seen_twice = i32::MIN;
-    while seen_twice == i32::MIN {
+    'simulation:
+    loop {
         for f in &chances {
             curr_freq += f;
             if seen_freqs.contains(&curr_freq) && seen_twice == i32::MIN {
                 seen_twice = curr_freq;
-                break;
+                break 'simulation;
             }
             seen_freqs.insert(curr_freq);
         }
