@@ -27,6 +27,6 @@ fn main() {
         }
     }
 
-    dbg!(checksum)
+    dbg!(checksum);
     dbg!(res_sum);
 }
