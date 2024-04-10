@@ -2,7 +2,6 @@
 .vscode/
 **/__pycache__
 
-y2015/rust/target/
-y2017/rust/target/
+**/target
 
 *.swp  # vim files i think
