@@ -51,7 +51,7 @@ fn main() {
         visited.insert(p);
     }
     for (i, d) in dirs.iter().enumerate() {
-        let mut p = &mut at[i % at.len()];
+        let p = &mut at[i % at.len()];
         p.0 += d.0;
         p.1 += d.1;
         // rust you're high, go home
