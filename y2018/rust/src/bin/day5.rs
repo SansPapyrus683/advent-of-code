@@ -1,29 +1,23 @@
 use std::fs;
 
 fn react(polymer: &String) -> String {
-    let mut poly = polymer.as_bytes().to_vec();
-    let mut react_done = false;
-    while !react_done {
-        react_done = true;
-        let mut new_poly = Vec::new();
-        let mut at = 0;
-        while at < poly.len() - 1 {
-            let curr = poly[at];
-            let next = poly[at + 1];
-            if curr.to_ascii_uppercase() == next.to_ascii_uppercase() && curr != next {
-                at += 1;
-                react_done = false;
-            } else {
-                new_poly.push(curr);
-            }
-            at += 1;
+    let mut new_poly = Vec::new();
+    let can_react = |poly: &Vec<u8>| {
+        if poly.len() <= 1 {
+            return false;
         }
-        if at == poly.len() - 1 {
-            new_poly.push(poly[at]);
+        let curr = poly[poly.len() - 1];
+        let prev = poly[poly.len() - 2];
+        return curr.to_ascii_uppercase() == prev.to_ascii_uppercase() && curr != prev;
+    };
+    for c in polymer.bytes() {
+        new_poly.push(c);
+        while can_react(&new_poly) {
+            new_poly.pop();
+            new_poly.pop();
         }
-        poly = new_poly;
     }
-    return String::from_utf8(poly).unwrap();
+    return String::from_utf8(new_poly).unwrap();
 }
 
 fn main() {
