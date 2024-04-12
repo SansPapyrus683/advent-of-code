@@ -19,7 +19,7 @@ fn main() {
         }
     }
 
-    let mut p1_most_power = ((0y_, 0), i32::MIN);
+    let mut p1_most_power = ((0, 0), i32::MIN);
     let mut p2_most_power = ((0, 0, 0), i32::MIN);
     for sx in 1..=WIDTH {
         for sy in 1..=WIDTH {

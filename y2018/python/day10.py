@@ -1,14 +1,14 @@
 import re
 
-EMPTY = ' '
-FILLED = '█'
+EMPTY = " "
+FILLED = "█"
 THRESHOLD = 80  # results may vary
 
-light_fmt = r'position=<(\-?\d+),(\-?\d+)>velocity=<(\-?\d+),(\-?\d+)>'
+light_fmt = r"position=<(\-?\d+),(\-?\d+)>velocity=<(\-?\d+),(\-?\d+)>"
 lights = []
-with open('input/day10.txt') as read:
+with open("input/day10.txt") as read:
     for light in read.readlines():
-        light = ''.join(c for c in light if not c.isspace())
+        light = "".join(c for c in light if not c.isspace())
         light = [int(i) for i in next(iter(re.findall(light_fmt, light)))]
         lights.append([(light[0], light[1]), (light[2], light[3])])
 
@@ -17,10 +17,10 @@ while True:
     for l in lights:
         l[0] = (l[0][0] + l[1][0], l[0][1] + l[1][1])
 
-    min_x = float('inf')
-    max_x = -float('inf')
-    min_y = float('inf')
-    max_y = -float('inf')
+    min_x = float("inf")
+    max_x = -float("inf")
+    min_y = float("inf")
+    max_y = -float("inf")
     for p, _ in lights:
         min_x = min(min_x, p[0])
         max_x = max(max_x, p[0])
@@ -39,5 +39,5 @@ while True:
 
         print(f"curr time: {time}")
         for r in grid:
-            print(''.join(r))
+            print("".join(r))
 
