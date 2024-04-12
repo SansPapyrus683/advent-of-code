@@ -1,23 +1,23 @@
 import re
 
 ADJ = 2  # how many pots do we have to check on the side?
-PLANT = '#'
-EMPTY = '.'
+PLANT = "#"
+EMPTY = "."
 P1_TIME = 20
 P2_TIME = 50000000000
 
 
 rules = {}
-with open('input/day12.txt') as read:
+with open("input/day12.txt") as read:
     both = PLANT + EMPTY
     pots = next(iter(re.findall(
-        f'initial state: ([{both}]*)', read.readline()
+        f"initial state: ([{both}]*)", read.readline()
     )))
 
     read.readline()  # idk why there's a blank line
     for r in read.readlines():
         config, res = next(iter(re.findall(
-            f'([{both}]{{{2 * ADJ + 1}}}) => ([{both}])', r
+            f"([{both}]{{{2 * ADJ + 1}}}) => ([{both}])", r
         )))
         rules[config] = res
 assert rules[EMPTY * (2 * ADJ + 1)] == EMPTY
@@ -39,7 +39,7 @@ while True:
 
     zero_pos += ADJ
     time += 1
-    pots = ''.join(updated)
+    pots = "".join(updated)
     if prev is not None:
         prev_relevant = prev[prev.find(PLANT):prev.rfind(PLANT) + 1]
         curr_relevant = pots[pots.find(PLANT):pots.rfind(PLANT) + 1]
@@ -61,6 +61,7 @@ while True:
         for i in range(len(pots)):
             if pots[i] == PLANT:
                 total += i - zero_pos
+        print(pots)
         print(f"pot total after {time} gens: {total}")
 
     prev = curr
