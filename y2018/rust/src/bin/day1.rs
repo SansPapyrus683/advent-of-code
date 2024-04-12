@@ -2,7 +2,7 @@ use std::collections::HashSet;
 use std::fs;
 
 fn main() {
-    let chances: Vec<i32> = fs::read_to_string("../input/day1.txt")
+    let chances: Vec<_> = fs::read_to_string("../input/day1.txt")
         .unwrap()
         .split_whitespace()
         .map(|i| i.parse::<i32>().unwrap())

@@ -50,7 +50,7 @@ fn hex_dist(p1: &Point, p2: &Point) -> u32 {
 }
 
 fn main() {
-    let steps: Vec<HexDir> = fs::read_to_string("../input/day11.txt")
+    let steps: Vec<_> = fs::read_to_string("../input/day11.txt")
         .expect("bruh")
         .trim()
         .split(',')

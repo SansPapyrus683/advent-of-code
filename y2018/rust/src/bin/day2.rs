@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::fs;
 
 fn main() {
-    let box_ids: Vec<String> = fs::read_to_string("../input/day2.txt")
+    let box_ids: Vec<_> = fs::read_to_string("../input/day2.txt")
         .unwrap()
         .split_whitespace()
         .map(|s| s.to_string())

@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let prog: Vec<i32> = fs::read_to_string("../input/day5.txt")
+    let prog: Vec<_> = fs::read_to_string("../input/day5.txt")
         .expect("bruh")
         .lines()
         .map(|i| i.parse::<i32>().unwrap())

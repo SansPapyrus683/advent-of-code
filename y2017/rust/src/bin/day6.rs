@@ -2,7 +2,7 @@ use std::fs;
 use std::collections::HashMap;
 
 fn main() {
-    let mut blocks: Vec<u32> = fs::read_to_string("../input/day6.txt")
+    let mut blocks: Vec<_> = fs::read_to_string("../input/day6.txt")
         .expect("bruh")
         .split_whitespace()
         .map(|i| i.parse::<u32>().unwrap())

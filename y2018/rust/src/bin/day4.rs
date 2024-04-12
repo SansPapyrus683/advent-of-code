@@ -14,7 +14,7 @@ enum Event {
 fn main() {
     let event_fmt = Regex::new(r"\[(.*)] (.*)").unwrap();
     let guard_fmt = Regex::new(r"guard #(\d+) begins shift").unwrap();
-    let mut events: Vec<(NaiveDateTime, Event)> = fs::read_to_string("../input/day4.txt")
+    let mut events: Vec<_> = fs::read_to_string("../input/day4.txt")
         .unwrap()
         .lines()
         .map(|e| {
@@ -56,7 +56,7 @@ fn main() {
                         .get_mut(&curr_guard)
                         .unwrap()
                         .entry(curr_at.minute())
-                        .and_mshouldodify(|freq| *freq += 1)
+                        .and_modify(|freq| *freq += 1)
                         .or_insert(1);
                     curr_at += Duration::minutes(1);
                 }
