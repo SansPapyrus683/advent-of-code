@@ -46,7 +46,7 @@ SLASH_TURNS = {
 
 track = []
 carts = []
-with open('input/day13.txt') as read:
+with open("input/day13.txt") as read:
     for i, row in enumerate(read.readlines()):
         track.append([])
         for j, c in enumerate(row.rstrip()):
