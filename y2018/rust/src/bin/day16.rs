@@ -28,8 +28,7 @@ enum Op {
 }
 
 impl Op {
-    fn apply(&self, reg: &Vec<i32>, a: i32, b: i32, c: i32) -> Vec<i32> {
-        let mut reg = reg.clone();
+    fn apply(&self, mut reg: Vec<i32>, a: i32, b: i32, c: i32) -> Vec<i32> {
         reg[c as usize] = match self {
             Op::Addr => reg[a as usize] + reg[b as usize],
             Op::Addi => reg[a as usize] + b,
@@ -87,7 +86,7 @@ fn main() {
     for (bef, op, aft) in &samples {
         let mut good = HashSet::new();
         for poss in Op::iter() {
-            let res = poss.apply(&bef, op.1, op.2, op.3);
+            let res = poss.apply(bef.clone(), op.1, op.2, op.3);
             if res.eq(aft) {
                 good.insert(poss);
             }
@@ -129,7 +128,7 @@ fn main() {
 
     let mut reg = vec![0; 4];
     for (op, a, b, c) in &instructions {
-        reg = op.apply(&reg, *a, *b, *c);
+        reg = op.apply(reg, *a, *b, *c);
     }
     println!("value of register 0: {}", reg[0]);
 }

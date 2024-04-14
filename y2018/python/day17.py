@@ -11,7 +11,6 @@ class Tile:
     SAND = enum.auto()
     STILL = enum.auto()
     FLOW = enum.auto()
-    SRC = enum.auto()
 
 
 xy_fmt = r"x=(\d+),\s+y=(\d+)\.\.(\d+)"
@@ -75,8 +74,8 @@ while todo:
                and grid[r, c_right + 1] != Tile.CLAY):
             c_right += 1
 
-        left_wall = grid[r, c_left - 1] == Tile.CLAY
-        right_wall = grid[r, c_right + 1] == Tile.CLAY
+        left_wall = c_left > 0 and grid[r, c_left - 1] == Tile.CLAY
+        right_wall = c_right + 1 < len(grid[r]) and grid[r, c_right + 1] == Tile.CLAY
         if left_wall and right_wall:
             for fill_c in range(c_left, c_right + 1):
                 grid[r, fill_c] = Tile.STILL
