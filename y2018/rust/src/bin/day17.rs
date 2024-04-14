@@ -106,18 +106,16 @@ fn main() {
     }
 
     let highest_clay = clay.iter().min_by_key(|c| c.0).unwrap().0 as u32;
-    let flowing = grid
-        .iter()
-        .flat_map(|r| r)
-        .map(|t| (*t == Tile::Flow) as u32)
-        .sum::<u32>()
-        - highest_clay;
-    let still = grid
-        .iter()
-        .flat_map(|r| r)
-        .map(|t| (*t == Tile::Still) as u32)
-        .sum::<u32>();
+    let (flowing, still) = grid.iter().flatten().fold((0, 0), |(a, b), t| {
+        (
+            a + (*t == Tile::Flow) as u32,
+            b + (*t == Tile::Still) as u32,
+        )
+    });
 
-    println!("total water (while flowing): {}", flowing + still);
+    println!(
+        "total water (while flowing): {}",
+        flowing + still - highest_clay
+    );
     println!("total water (while still): {still}");
 }
