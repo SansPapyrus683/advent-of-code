@@ -39,9 +39,6 @@ fn room_dists(re: &str) -> HashMap<(i32, i32), u32> {
 }
 
 fn main() {
-    let mut vec: Vec<Box<dyn Fn()>> = Vec::new();
-    vec.push(Box::new(|| println!("test")));
-    vec.push(Box::new(|| println!("test2")));
     let raw_regex = fs::read_to_string("../input/day20.txt")
         .unwrap()
         .trim()
