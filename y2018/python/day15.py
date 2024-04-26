@@ -50,8 +50,6 @@ class Battle:
 
                 has_bad = [(bad[n].hp, n) for n in adj(*pos) if n in bad]
                 if not has_bad:
-                    in_range = []
-
                     frontier = deque([pos])
                     visited = {pos: 0}
                     while frontier:
@@ -65,6 +63,7 @@ class Battle:
                                 frontier.append(n)
                                 visited[n] = curr_dist + 1
 
+                    in_range = []
                     for b in bad:
                         in_range.extend([
                             (visited[n], n) for n in adj(*b)
@@ -122,7 +121,7 @@ class Battle:
 elves = {}
 goblins = {}
 walls = set()
-with open('input/day15.txt') as read:
+with open("input/day15.txt") as read:
     for r, row in enumerate(read.readlines()):
         row = row.strip()
         for c, square in enumerate(row):
