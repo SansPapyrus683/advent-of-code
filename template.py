@@ -1,6 +1,6 @@
-from collections import defaultdict
-from itertools import permutations, combinations
-from copy import deepcopy
+from collections import defaultdict as dd, deque as dq
+from itertools import permutations as perm, combinations as combi
+from copy import deepcopy as dc
 
 
 # region utility
@@ -62,11 +62,12 @@ def sign(n: int) -> int:
     return -1 if n < 0 else 1
 # endregion
 
-
+arr = []
 with open("input.txt") as read:
-    arr = []
     for v, g in enumerate(group(read.readlines(), "\n")):
         for i in g:
             pass
 
 print(arr)
+acc = 0
+# acc = float("inf")  # depends, usually it asks for the sum or the minimum

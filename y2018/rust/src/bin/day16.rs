@@ -3,53 +3,9 @@ use regex::Regex;
 use std::collections::{HashMap, HashSet};
 use std::fs;
 use strum::IntoEnumIterator;
-use strum_macros::EnumIter;
+use aoc_rust_2018::assembly::Op;
 
 const P1_THRESHOLD: u32 = 3;
-
-#[derive(Debug, EnumIter, Eq, PartialEq, Hash, Copy, Clone)]
-enum Op {
-    Addr,
-    Addi,
-    Mulr,
-    Muli,
-    Banr,
-    Bani,
-    Borr,
-    Bori,
-    Setr,
-    Seti,
-    Gtir,
-    Gtri,
-    Gtrr,
-    Eqir,
-    Eqri,
-    Erqq,
-}
-
-impl Op {
-    fn apply(&self, mut reg: Vec<i32>, a: i32, b: i32, c: i32) -> Vec<i32> {
-        reg[c as usize] = match self {
-            Op::Addr => reg[a as usize] + reg[b as usize],
-            Op::Addi => reg[a as usize] + b,
-            Op::Mulr => reg[a as usize] * reg[b as usize],
-            Op::Muli => reg[a as usize] * b,
-            Op::Banr => reg[a as usize] & reg[b as usize],
-            Op::Bani => reg[a as usize] & b,
-            Op::Borr => reg[a as usize] | reg[b as usize],
-            Op::Bori => reg[a as usize] | b,
-            Op::Setr => reg[a as usize],
-            Op::Seti => a,
-            Op::Gtir => i32::from(a > reg[b as usize]),
-            Op::Gtri => i32::from(reg[a as usize] > b),
-            Op::Gtrr => i32::from(reg[a as usize] > reg[b as usize]),
-            Op::Eqir => i32::from(a == reg[b as usize]),
-            Op::Eqri => i32::from(reg[a as usize] == b),
-            Op::Erqq => i32::from(reg[a as usize] == reg[b as usize]),
-        };
-        reg
-    }
-}
 
 fn main() {
     let mut read = fs::read_to_string("../input/day16p2.txt").unwrap();
