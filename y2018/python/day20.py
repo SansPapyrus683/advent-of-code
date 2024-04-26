@@ -4,10 +4,10 @@ P2_DIST_REQ = 1000
 def room_dists(re: str) -> dict[tuple[int, int], int]:
     # sauce: https://todd.ginsberg.com/post/advent-of-code/2018/day20/
     dir_dict = {
-        'N': lambda r, c: (r - 1, c),
-        'S': lambda r, c: (r + 1, c),
-        'E': lambda r, c: (r, c + 1),
-        'W': lambda r, c: (r, c - 1),
+        "N": lambda r, c: (r - 1, c),
+        "S": lambda r, c: (r + 1, c),
+        "E": lambda r, c: (r, c + 1),
+        "W": lambda r, c: (r, c - 1),
     }
     start = (0, 0)
     dist = {start: 0}
@@ -17,17 +17,17 @@ def room_dists(re: str) -> dict[tuple[int, int], int]:
         if i in dir_dict:
             prev = at
             at = dir_dict[i](*at)
-            dist[at] = min(dist.get(at, float('inf')), dist[prev] + 1)
-        elif i == '(':
+            dist[at] = min(dist.get(at, float("inf")), dist[prev] + 1)
+        elif i == "(":
             stack.append(at)
-        elif i == ')':
+        elif i == ")":
             at = stack.pop()
-        elif i == '|':
+        elif i == "|":
             at = stack[-1]
     return dist
 
 
-with open('input/day20.txt') as read:
+with open("input/day20.txt") as read:
     regex = read.readline().strip()[1:-1]
 
 dists = room_dists(regex).values()
