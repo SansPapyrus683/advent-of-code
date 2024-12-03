@@ -4,6 +4,10 @@ from copy import deepcopy as dc
 
 
 # region utility
+def a2i(a: str):
+    return [int(i) for i in a.split()]
+
+
 def group(seq, sep):
     ret = []
     for el in seq:
@@ -21,24 +25,24 @@ def chunks(lst: list, n: int):
         yield lst[i:i + n]
 
 
-def neighbors4raw(r: int, c: int) -> list[tuple[int, int]]:
+def n4r(r: int, c: int) -> list[tuple[int, int]]:
     return [(r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)]
 
 
-def neighbors4(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
+def n4(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
     return [p for p in [
         (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
     ] if 0 <= p[0] < r_max and 0 <= p[1] < c_max]
 
 
-def neighbors8raw(r: int, c: int) -> list[tuple[int, int]]:
+def n8r(r: int, c: int) -> list[tuple[int, int]]:
     return [
         (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
         (r + 1, c + 1), (r - 1, c - 1), (r - 1, c + 1), (r + 1, c - 1),
     ]
 
 
-def neighbors8(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
+def n8(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
     return [p for p in [
         (r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1),
         (r + 1, c + 1), (r - 1, c - 1), (r - 1, c + 1), (r + 1, c - 1),
