@@ -68,6 +68,8 @@ def sign(n: int) -> int:
 
 arr = []
 with open("input.txt") as read:
+    raw = read.read().strip()
+    read.seek(0)
     for v, g in enumerate(group(read.readlines(), "\n")):
         for l in g:
             pass
