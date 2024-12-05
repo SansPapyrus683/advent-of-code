@@ -67,13 +67,12 @@ def sign(n: int) -> int:
 # endregion
 
 arr = []
+acc = 0
+# acc = float("inf")  # depends, usually it asks for the sum or the minimum
 with open("input.txt") as read:
     raw = read.read().strip()
     read.seek(0)
     for v, g in enumerate(group(read.readlines(), "\n")):
         for l in g:
-            pass
-
-print(arr)
-acc = 0
-# acc = float("inf")  # depends, usually it asks for the sum or the minimum
+            l = l.strip()
+    print(arr)
