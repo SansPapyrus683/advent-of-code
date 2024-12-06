@@ -1,3 +1,5 @@
+from functools import cmp_to_key
+
 cmp = set()
 pages = []
 with open("presents.txt") as read:
@@ -16,22 +18,7 @@ with open("presents.txt") as read:
 p1_total = 0
 p2_total = 0
 for p in pages:
-    elems = set(p)
-    sorted_ = p.copy()
-
-    update = True
-    while update:
-        update = False
-        for a, b in cmp:
-            if a not in elems or b not in elems:
-                continue
-
-            a_ind = sorted_.index(a)
-            b_ind = sorted_.index(b)
-            if a_ind > b_ind:
-                sorted_[a_ind], sorted_[b_ind] = sorted_[b_ind], sorted_[a_ind]
-                update = True
-
+    sorted_ = sorted(p, key=cmp_to_key(lambda a, b: -1 if (a, b) in cmp else 1))
     if p == sorted_:
         p1_total += p[len(p) // 2]
     else:
