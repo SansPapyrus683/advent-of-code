@@ -1,7 +1,7 @@
+import sys
 import re
 
-with open("have_snow.txt") as read:
-    mem = "".join(line.strip() for line in read.readlines())
+mem = sys.stdin.read()
 
 mul_instr = re.compile(r"mul\((\d+),(\d+)\)")
 relevant = re.compile(r"mul\(\d+,\d+\)|do\(\)|don't\(\)")

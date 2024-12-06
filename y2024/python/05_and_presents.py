@@ -1,19 +1,19 @@
+import sys
 from functools import cmp_to_key
 
 cmp = set()
 pages = []
-with open("presents.txt") as read:
-    reading_order = True
-    for line in read:
-        if line == "\n":
-            reading_order = False
-            continue
+reading_order = True
+for line in sys.stdin:
+    if line == "\n":
+        reading_order = False
+        continue
 
-        line = line.strip()
-        if reading_order:
-            cmp.add(tuple(int(i) for i in line.split("|")))
-        else:
-            pages.append([int(i) for i in line.split(",")])
+    line = line.strip()
+    if reading_order:
+        cmp.add(tuple(int(i) for i in line.split("|")))
+    else:
+        pages.append([int(i) for i in line.split(",")])
 
 p1_total = 0
 p2_total = 0

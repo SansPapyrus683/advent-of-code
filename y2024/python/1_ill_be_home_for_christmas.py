@@ -1,12 +1,12 @@
+import sys
 from collections import Counter
 
 left = []
 right = []
-with open("for_christmas.txt") as read:
-    for i in read:
-        l, r = [int(i) for i in i.split()]
-        left.append(l)
-        right.append(r)
+for i in sys.stdin:
+    l, r = [int(i) for i in i.split()]
+    left.append(l)
+    right.append(r)
 
 right_amt = Counter(right)
 left.sort()

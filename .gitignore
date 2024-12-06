@@ -5,3 +5,4 @@
 **/target
 
 *.swp  # vim files i think
+input.txt  # ok yeah maybe i should use stdin instead

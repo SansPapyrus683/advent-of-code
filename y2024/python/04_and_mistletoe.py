@@ -1,7 +1,8 @@
+import sys
+
 DIRS = [(-1, 0), (1, 0), (0, -1), (0, 1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
 
-with open("mistletoe.txt") as read:
-    grid = [row.strip() for row in read]
+grid = [row.strip() for row in sys.stdin]
 
 row_num = len(grid)
 col_num = len(grid[0])

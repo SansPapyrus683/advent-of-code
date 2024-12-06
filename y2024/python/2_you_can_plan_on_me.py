@@ -1,3 +1,6 @@
+import sys
+
+
 def safe(report: list[int]) -> int:
     diffs = []
     gt = []
@@ -10,15 +13,14 @@ def safe(report: list[int]) -> int:
 
 
 reports = []
-with open("on_me.txt") as read:
-    for r in read:
-        reports.append([int(i) for i in r.split()])
+for r in sys.stdin:
+    reports.append([int(i) for i in r.split()])
 
 strict_safe = 0
 tol_safe = 0
 for r in reports:
     strict_safe += safe(r)
-    tol_safe += any(safe(r[:i] + r[i + 1:]) for i in range(len(r)))
+    tol_safe += any(safe(r[:i] + r[i + 1 :]) for i in range(len(r)))
 
 print(f"ok we're somewhat back: {strict_safe}")
 print(f"though these points are only due to server problems haha: {tol_safe}")
