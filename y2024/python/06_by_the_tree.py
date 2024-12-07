@@ -5,7 +5,7 @@ DIRS = [(-1, 0), (0, 1), (1, 0), (0, -1)]
 
 def traverse(
     grid: list[list[str]], start: tuple[int, int], dir_: int = 0
-) -> tuple[bool, set[tuple[int, int]]]:
+) -> tuple[bool, set[tuple[tuple[int, int], int]]]:
     visited = set()
     at = start
     d_at = dir_
@@ -40,7 +40,7 @@ print(f"ok i barely scraped into top 100 today: {len(distinct)}")
 looping_obstacles = 0
 for r in range(len(grid)):
     for c in range(len(grid[0])):
-        if grid[r][c] != ".":
+        if (r, c) not in distinct:
             continue
         grid[r][c] = "#"
         looping_obstacles += traverse(grid, start)[0]
