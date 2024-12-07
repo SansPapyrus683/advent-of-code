@@ -5,8 +5,12 @@ from copy import deepcopy as dc
 
 
 # region utility
-def a2i(a: str):
-    return [int(i) for i in a.split()]
+def a2i(a: list[str]):
+    return [int(i) for i in a]
+
+
+def add(first, second):
+    return type(first)(f + s for f, s in zip(first, second))
 
 
 def group(seq, sep):
@@ -66,6 +70,9 @@ def sign(n: int) -> int:
         return 0
     return -1 if n < 0 else 1
 # endregion
+
+# even indices are the 4 cardinal directions, you can + mod 2 to turn right or - mod 2 to turn left
+DIRS = [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]
 
 arr = []
 acc = 0
