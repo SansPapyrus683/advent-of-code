@@ -1,11 +1,12 @@
 import sys
+import typing as ty
 from collections import defaultdict as dd, deque as dq
 from itertools import permutations as perm, combinations as combi
 from copy import deepcopy as dc
 
 
 # region utility
-def a2i(a: list[str]):
+def a2i(a: list[str]) -> list[int]:
     return [int(i) for i in a]
 
 
@@ -69,6 +70,17 @@ def sign(n: int) -> int:
     if n == 0:
         return 0
     return -1 if n < 0 else 1
+
+
+def gi(grid: list[list]) -> ty.Generator[tuple[int, int]]:
+    assert len({len(r) for r in grid}) == 1
+    for r in range(len(grid)):
+        for c in range(len(grid[0])):
+            yield r, c
+
+
+def get(grid: list[list], r: int, c: int):
+    return grid[r][c] if 0 <= r < len(grid) and 0 <= c < len(grid[r]) else None
 # endregion
 
 # even indices are the 4 cardinal directions, you can + mod 2 to turn right or - mod 2 to turn left
