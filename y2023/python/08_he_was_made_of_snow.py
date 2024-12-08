@@ -19,7 +19,7 @@ def num_steps(
     return ret
 
 
-seq = input().strip()
+seq = input()
 input()  # why is there an empty newline what
 
 adj = {}
