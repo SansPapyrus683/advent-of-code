@@ -6,12 +6,19 @@ from copy import deepcopy as dc
 
 
 # region utility
+T = ty.TypeVar("T")
+
+
 def a2i(a: list[str]) -> list[int]:
     return [int(i) for i in a]
 
 
 def add(first, second):
     return type(first)(f + s for f, s in zip(first, second))
+
+
+def sub(first, second):
+    return type(first)(f - s for f, s in zip(first, second))
 
 
 def group(seq, sep):
@@ -72,11 +79,11 @@ def sign(n: int) -> int:
     return -1 if n < 0 else 1
 
 
-def gi(grid: list[list]) -> ty.Generator[tuple[int, int]]:
+def gi(grid: list[list[T]]) -> ty.Generator[tuple[int, int, T]]:
     assert len({len(r) for r in grid}) == 1
     for r in range(len(grid)):
         for c in range(len(grid[0])):
-            yield r, c
+            yield r, c, grid[r][c]
 
 
 def get(grid: list[list], r: int, c: int):
