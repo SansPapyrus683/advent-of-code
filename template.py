@@ -9,7 +9,7 @@ from copy import deepcopy as dc
 T = ty.TypeVar("T")
 
 
-def a2i(a: list[str]) -> list[int]:
+def a2i(a: ty.Iterable[str]) -> list[int]:
     return [int(i) for i in a]
 
 
