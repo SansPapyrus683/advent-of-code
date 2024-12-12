@@ -1,15 +1,16 @@
 import sys
-import typing as ty
+from typing import TypeVar
+import collections.abc as abc
 from collections import defaultdict as dd, deque as dq
 from itertools import permutations as perm, combinations as combi
 from copy import deepcopy as dc
 
 
 # region utility
-T = ty.TypeVar("T")
+T = TypeVar("T")
 
 
-def a2i(a: ty.Iterable[str]) -> list[int]:
+def a2i(a: abc.Iterable[str]) -> list[int]:
     return [int(i) for i in a]
 
 
@@ -79,7 +80,7 @@ def sign(n: int) -> int:
     return -1 if n < 0 else 1
 
 
-def gi(grid: list[list[T]]) -> ty.Generator[tuple[int, int, T]]:
+def gi(grid: list[abc.Sequence[T]]) -> abc.Generator[tuple[int, int, T]]:
     assert len({len(r) for r in grid}) == 1
     for r in range(len(grid)):
         for c in range(len(grid[0])):
