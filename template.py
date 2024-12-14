@@ -104,3 +104,4 @@ for v, g in enumerate(group(sys.stdin.readlines(), "\n")):
         l = l.strip()
 
 print(arr)
+print(acc)
