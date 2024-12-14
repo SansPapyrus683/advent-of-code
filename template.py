@@ -4,6 +4,7 @@ import collections.abc as abc
 from collections import defaultdict as dd, deque as dq
 from itertools import permutations as perm, combinations as combi
 from copy import deepcopy as dc
+import re
 
 
 # region utility
@@ -89,6 +90,12 @@ def gi(grid: list[abc.Sequence[T]]) -> abc.Generator[tuple[int, int, T]]:
 
 def get(grid: list[list], r: int, c: int):
     return grid[r][c] if 0 <= r < len(grid) and 0 <= c < len(grid[r]) else None
+
+
+def re_int(s: str, regex: re.Pattern[str]):
+    res = regex.match(s)
+    assert res is not None
+    return a2i(res.groups())
 # endregion
 
 # even indices are the 4 cardinal directions, you can + mod 2 to turn right or - mod 2 to turn left
