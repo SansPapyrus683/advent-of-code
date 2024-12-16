@@ -23,6 +23,10 @@ def sub(first, second):
     return type(first)(f - s for f, s in zip(first, second))
 
 
+def mul(first, by):
+    return type(first)(f * by for f in first)
+
+
 def group(seq, sep):
     ret = []
     for el in seq:
