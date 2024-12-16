@@ -4,11 +4,9 @@ from collections import defaultdict
 
 DIRS = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
-maze = [list(row.strip()) for row in sys.stdin]
-
 
 def shortest_dists(
-    grid: list[list[str]], starts: list[tuple[int, int, int]], rev: bool = False
+        grid: list[list[str]], starts: list[tuple[int, int, int]], rev: bool = False
 ):
     mul = -1 if rev else 1
     frontier = []
@@ -37,6 +35,7 @@ def shortest_dists(
     return start_dist
 
 
+maze = [list(row.strip()) for row in sys.stdin]
 start, end = None, None
 for r in range(len(maze)):
     for c, cell in enumerate(maze[r]):
