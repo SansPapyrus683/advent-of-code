@@ -28,4 +28,4 @@ while frontier:
     for n_cost, n in n_states:
         if n not in min_dist or n_cost < min_dist[n]:
             min_dist[n] = n_cost
-            heappush((n_cost, n))
+            heappush(frontier, (n_cost, n))
