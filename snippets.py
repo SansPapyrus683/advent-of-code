@@ -1,5 +1,3 @@
-"""i should've made this file a long time ago"""
-
 from collections import deque as dq
 from heapq import *
 
