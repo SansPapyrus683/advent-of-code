@@ -12,28 +12,30 @@ def neighbors8(r: int, c: int, r_max: int, c_max: int) -> list[tuple[int, int]]:
 
 arr = [list(row.strip()) for row in sys.stdin]
 
-accessible = 0
-first_time = -1
-while True:
-    doable = set()
-    for r in range(len(arr)):
-        for c in range(len(arr[0])):
-            if arr[r][c] != "@":
-                continue
+row_num = len(arr)
+col_num = len(arr[0])
 
-            adj = sum(arr[nr][nc] == "@" for nr, nc in neighbors8(r, c, len(arr), len(arr[0])))
-            if adj < 4:
-                doable.add((r, c))
+cleared = set()
+for r in range(len(arr)):
+    for c in range(len(arr[r])):
+        adj = sum(arr[nr][nc] == "@" for nr, nc in neighbors8(r, c, row_num, col_num))
+        if arr[r][c] == "@" and adj < THRESH:
+            cleared.add((r, c))
 
-    if not doable:
-        break
+print(f"HOLY CHOKE: {len(cleared)}")
 
-    for r, c in doable:
-        arr[r][c] = "."
+# not sure if there's a more elegant way to implement this floodfill...
+frontier = list(cleared)
+while frontier:
+    curr = frontier.pop()
+    arr[curr[0]][curr[1]] = "."
+    for r, c in neighbors8(*curr, row_num, col_num):
+        if (r, c) in cleared:
+            continue
 
-    accessible += len(doable)
-    if first_time == -1:
-        first_time = len(doable)
+        adj = sum(arr[nr][nc] == "@" for nr, nc in neighbors8(r, c, row_num, col_num))
+        if arr[r][c] == "@" and adj < THRESH:
+            frontier.append((r, c))
+            cleared.add((r, c))
 
-print(f"HOLY CHOKE: {first_time}")
-print(f"at least p2 was fast... {accessible}")
+print(f"at least p2 was fast... {len(cleared)}")
